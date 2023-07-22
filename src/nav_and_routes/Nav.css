@@ -2,32 +2,23 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: space-between;
   background-color: var(--theme-green);
   overflow: hidden;
+  /* position: fixed;
+  width: 100%; */
 }
 
-/* .Whisk-logo-txt {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: goldenrod;
-  text-align: center;
-  letter-spacing: 5px;
-  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
-} */
 .Whisk-logo-img {
+  padding: 8px;
   height: 30px;
-}
-
-.NavBar-li {
-  float: left;
 }
 
 .NavBar-li a {
   display: block;
   color: var(--theme-beige);
-  font-size: 1.6rem;
+  font-size: 18px;
   font-weight: 700;
   text-align: center;
   letter-spacing: 2px;
@@ -37,8 +28,59 @@
 }
 
 .NavBar-li a:hover {
-  text-shadow: 0.3px 0 0 currentColor;
+  color: var(--theme-orange);
 }
 .active {
-  text-shadow: 1px 0 0 currentColor;
+  background-color: var(--theme-orange);
+}
+
+.NavBar-dropdown {
+  float: right;
+  overflow: hidden;
+  margin-right: 25px;
+  margin-top: 3px;
+}
+
+.NavBar-dropdown-btn {
+  font-size: 18px;
+  padding: 10px 14px;
+  /* padding: px 14px; */
+  border: none;
+  border-radius: 40px;
+  background-color: var(--theme-orange);
+  outline: none;
+  color: white;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+.NavBar-dropdown-content {
+  margin-top: 5px;
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.NavBar-dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* .NavBar-dropdown-content a:hover {
+  background-color: #ddd;
+} */
+
+.NavBar-dropdown-content-links:hover {
+  color: var(--theme-orange);
+}
+
+.NavBar-dropdown:hover .NavBar-dropdown-content {
+  display: block;
 }

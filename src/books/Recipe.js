@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import "./Recipe.css";
 
 const Recipe = ({ recipe }) => {
@@ -9,7 +11,9 @@ const Recipe = ({ recipe }) => {
         <div className="Recipe-name-text">
           <b>{recipe.label}</b>
         </div>
-        <div className="Recipe-plus-btn">+</div>
+        <div className="Recipe-plus-btn-container">
+          <FontAwesomeIcon icon={faPlusCircle} className="Recipe-plus-btn" />
+        </div>
       </div>
     </div>
   );

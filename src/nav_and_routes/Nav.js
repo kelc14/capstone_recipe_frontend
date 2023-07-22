@@ -1,11 +1,16 @@
 import React, { useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 // import orangeWLogo from "../images/w_logo_orange.png";
-import "./Nav.css";
 import { useSelector, useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import WhiskApi from "../api/api";
 import { updateUserInfo, logoutUser } from "../features/authSlice";
+import SearchBar from "./SearchBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+
+import "./Nav.css";
+
 /**
  * NavBar Component ->
  *
@@ -20,6 +25,10 @@ import { updateUserInfo, logoutUser } from "../features/authSlice";
 const NavBar = () => {
   const { userInfo, userToken } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
+
+  if (userToken) {
+    WhiskApi.token = userToken;
+  }
 
   //   useEffect();
   //   if (userToken && !userInfo) {
@@ -41,18 +50,46 @@ const NavBar = () => {
   const authLinks = () => {
     return (
       <>
-        <li className="NavBar-li" style={{ float: "right" }}>
-          <NavLink to="/" onClick={handleLogout}>{`Logout`}</NavLink>
-        </li>
-        <li className="NavBar-li" style={{ float: "right" }}>
-          <NavLink to="/profile ">Profile</NavLink>
-        </li>
-        <li className="NavBar-li" style={{ float: "right" }}>
-          <NavLink to="/calendar">Calendar</NavLink>
-        </li>
-        <li className="NavBar-li" style={{ float: "right" }}>
-          <NavLink to="/books">Books</NavLink>
-        </li>
+        <div className="NavBar-div">
+          <li
+            className="NavBar-li NavBar-li-allowactive"
+            style={{ float: "right" }}
+          >
+            <NavLink to="/books">Books</NavLink>
+          </li>{" "}
+        </div>
+        <div className="NavBar-div">
+          <li className="NavBar-li">
+            <SearchBar />
+          </li>{" "}
+        </div>
+        <div className="NavBar-div">
+          <li
+            className="NavBar-li NavBar-li-allowactive"
+            style={{ float: "right" }}
+          >
+            <NavLink to="/calendar">Calendar</NavLink>
+          </li>
+        </div>
+
+        <div className="NavBar-div NavBar-dropdown">
+          <button className="NavBar-dropdown-btn">K</button>
+          <div className="NavBar-dropdown-content">
+            <NavLink to="/profile " className="NavBar-dropdown-content-links">
+              Profile
+            </NavLink>
+            <NavLink
+              to="/"
+              onClick={handleLogout}
+              className="NavBar-dropdown-content-links"
+              style={({ isActive }) => {
+                return {
+                  backgroundColor: isActive ? "white" : "",
+                };
+              }}
+            >{`Logout`}</NavLink>
+          </div>
+        </div>
       </>
     );
   };
@@ -72,11 +109,13 @@ const NavBar = () => {
 
   return (
     <ul className="NavBar">
-      <li className="NavBar-li">
-        <Link to="/" className="Whisk-logo-txt">
-          {/* WHISK */}
-          <img src="/images/w_logo_orange.png" className="Whisk-logo-img" />
-        </Link>
+      <li className="NavBar-li-logo">
+        <div className="Whisk-logo-txt">
+          {" "}
+          <Link to="/">
+            <img src="/images/w_logo_orange.png" className="Whisk-logo-img" />
+          </Link>
+        </div>
       </li>
 
       {userToken ? authLinks() : anonLinks()}

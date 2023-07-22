@@ -1,0 +1,20 @@
+.SearchBar {
+  display: flex;
+  padding-top: 15px;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.SearchBar-input {
+  border-radius: 30px;
+  border: none;
+  padding-left: 10px;
+  font-family: var(--theme-font-family);
+}
+
+.SearchBar-icon {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: white;
+  cursor: pointer;
+}

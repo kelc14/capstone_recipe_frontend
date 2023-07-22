@@ -1,19 +1,27 @@
 .Recipe-card {
   border-radius: 10px;
-  width: 36%;
+  width: 25%;
+  min-width: 150px;
+  max-width: 300px;
   margin: 10px;
   background-color: var(--theme-beige);
 }
 
 .Recipe-img {
-  width: fit-content;
+  width: 80%;
   margin: 10px;
   border-radius: 5px 5px 0 0;
 }
 
+/* container */
 .Recipe-about {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  overflow: hidden;
+  padding-bottom: 15px;
 }
 
+/* grid item */
 .Recipe-name-text {
   text-align: left;
   font-size: 1.2rem;
@@ -23,12 +31,12 @@
   width: 60%;
 }
 
+/* grid item */
 .Recipe-plus-btn {
-  background-color: var(--theme-green);
-  color: white;
+  color: var(--theme-green);
   font-size: 2rem;
-  border-radius: 50px;
-  width: 50px;
-  height: 50px;
-  float: right;
+}
+
+.Recipe-plus-btn-container {
+  padding-top: 10px;
 }

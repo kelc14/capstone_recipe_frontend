@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 // import UserContext from "../hooks/UserContext";
 
 const ProtectedRoutes = ({ children }) => {
-  //   const user = useContext(UserContext);
+  const { userToken } = useSelector((store) => store.auth);
 
-  const user = null;
-
-  if (!user) {
+  if (!userToken) {
     return <Navigate to="/" replace />;
   }
   return children;
