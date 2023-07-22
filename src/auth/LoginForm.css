@@ -1,0 +1,38 @@
+.LoginForm {
+  width: 50vw;
+  background-color: var(--theme-beige);
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 10%;
+  padding: 20px;
+  overflow: hidden;
+}
+.LoginForm-heading {
+  color: var(--theme-orange);
+}
+.LoginForm-form {
+  text-align: left;
+}
+.LoginForm-label {
+  display: block;
+  padding-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.LoginForm-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.LoginForm-button {
+  background-color: var(--theme-green);
+  border: none;
+  border-radius: 10px;
+  color: black;
+  padding: 16px 32px;
+  font-size: 1rem;
+  margin: 4px 2px;
+  cursor: pointer;
+}

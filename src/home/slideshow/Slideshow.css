@@ -1,0 +1,33 @@
+.Slideshow {
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 400px;
+}
+
+.Slideshow-slide {
+  display: inline-block;
+  width: 100%;
+  object-fit: fill;
+  border-radius: 40px;
+}
+
+.Slideshow-slider {
+  white-space: nowrap;
+  transition: ease 1000ms;
+}
+.Slideshow-dots {
+  text-align: center;
+}
+.Slideshow-dot {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 15px 7px 0px;
+  background-color: #c4c4c4;
+}
+
+.Slideshow-dot:active {
+  background-color: #6a0dad;
+}

@@ -1,0 +1,38 @@
+.SignUpForm {
+  width: 50vw;
+  background-color: var(--theme-beige);
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 10%;
+  padding: 20px;
+  overflow: hidden;
+}
+.SignUpForm-heading {
+  color: var(--theme-orange);
+}
+.SignUpForm-form {
+  text-align: left;
+}
+.SignUpForm-label {
+  display: block;
+  padding-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.SignUpForm-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.SignUpForm-button {
+  background-color: var(--theme-green);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 16px 32px;
+  font-size: 1rem;
+  margin: 4px 2px;
+  cursor: pointer;
+}

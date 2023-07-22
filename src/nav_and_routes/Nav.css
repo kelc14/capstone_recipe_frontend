@@ -1,0 +1,44 @@
+.NavBar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--theme-green);
+  overflow: hidden;
+}
+
+/* .Whisk-logo-txt {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: goldenrod;
+  text-align: center;
+  letter-spacing: 5px;
+  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+    0px -4px 10px rgba(255, 255, 255, 0.3);
+} */
+.Whisk-logo-img {
+  height: 30px;
+}
+
+.NavBar-li {
+  float: left;
+}
+
+.NavBar-li a {
+  display: block;
+  color: var(--theme-beige);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 2px;
+  font-family: var(--theme-font-family);
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.NavBar-li a:hover {
+  text-shadow: 0.3px 0 0 currentColor;
+}
+.active {
+  text-shadow: 1px 0 0 currentColor;
+}

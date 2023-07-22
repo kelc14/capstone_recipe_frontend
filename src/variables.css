@@ -1,0 +1,13 @@
+:root {
+  /* --theme-green: #86e66d; */
+  --theme-green: #93ca6a;
+  --theme-purple: #e798ff;
+  --theme-beige: #ffeeeb;
+  /* --theme-orange: #f5694d; */
+  --theme-orange: #f15f47;
+  --theme-white: #ffffff;
+
+  --theme-font-family: "Cormorant Garamond", serif;
+}
+
+/* The app colors are purple (#e798ff),  beige (#ffeeeb), green (), white (#ffffff) and orange (#f5694d). The font is Albertan Pro. */

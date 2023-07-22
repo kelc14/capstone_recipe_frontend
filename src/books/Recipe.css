@@ -1,0 +1,34 @@
+.Recipe-card {
+  border-radius: 10px;
+  width: 36%;
+  margin: 10px;
+  background-color: var(--theme-beige);
+}
+
+.Recipe-img {
+  width: fit-content;
+  margin: 10px;
+  border-radius: 5px 5px 0 0;
+}
+
+.Recipe-about {
+}
+
+.Recipe-name-text {
+  text-align: left;
+  font-size: 1.2rem;
+  font-style: italic;
+  margin: 10px;
+  font-weight: 300;
+  width: 60%;
+}
+
+.Recipe-plus-btn {
+  background-color: var(--theme-green);
+  color: white;
+  font-size: 2rem;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  float: right;
+}
