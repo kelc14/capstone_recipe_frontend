@@ -7,7 +7,7 @@ const SearchBar = () => {
   /** SearchForm component
    * - filters based off of an input
    *
-   * Rendered in Jobs component & Companies component
+   * Rendered in navbar
    *
    */
 
@@ -21,9 +21,9 @@ const SearchBar = () => {
     evt.preventDefault();
     console.log(formData);
 
-    //   if (formData.search !== "") {
-    //     search(formData);
-    //   }
+    // if (formData.search !== "") {
+    //   search(formData);
+    // }
     setFormData(INITIAL_STATE);
   };
 

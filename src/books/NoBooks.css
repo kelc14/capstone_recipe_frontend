@@ -1,0 +1,27 @@
+.NoBooks {
+}
+.NoBooks-header {
+}
+.NoBooks-about {
+  margin: 0 auto;
+  width: 50%;
+}
+.NoBooks-add-btn {
+  margin-top: 20px;
+  background-color: var(--theme-purple);
+  border: none;
+  border-radius: 5px;
+  padding: 20px 30px;
+  font-size: 1.1rem;
+  font-family: var(--theme-font-family);
+  cursor: pointer;
+}
+
+.NoBooks-add-btn:hover {
+  background-color: var(--theme-beige);
+  color: var(--theme-purple);
+  border: 1px solid var(--theme-purple);
+}
+.NoBooks-img {
+  width: 60%;
+}

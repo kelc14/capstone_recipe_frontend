@@ -77,15 +77,15 @@ class WhiskApi {
   //    *      **
   //    */
 
-  //   static async userSignup({ username, password, firstName, lastName, email }) {
-  //     let res = await this.request(
-  //       "auth/register",
-  //       { username, password, firstName, lastName, email },
-  //       "post"
-  //     );
-  //     this.token = res.token;
-  //     return res.token;
-  //   }
+  static async userSignup({ username, password, firstName, lastName, email }) {
+    let res = await this.request(
+      "auth/register",
+      { username, password, firstName, lastName, email },
+      "post"
+    );
+    this.token = res.token;
+    return res.token;
+  }
 
   //   /** Get user
   //    *  { username }
@@ -107,6 +107,28 @@ class WhiskApi {
   static async getRandomRecipes() {
     let res = await this.request(`recipe`);
     return res.recipes;
+  }
+
+  //   /** For book id => get first 6 recipe thumbnails
+  //    *  {  }
+  //    *  => [src....,src....]
+  //    *      **
+  //    */
+
+  static async getBookDetails(id) {
+    let res = await this.request(`book/${id}`);
+    return res;
+  }
+
+  //   /** Add NEW Book for user => book details in response
+  //    *  { title, username }
+  //    *  => {id, title, username}
+  //    *
+  //    */
+
+  static async addNewBook(data) {
+    let res = await this.request(`book/`, data, "post");
+    return res.book;
   }
 
   //   /** PATCH user

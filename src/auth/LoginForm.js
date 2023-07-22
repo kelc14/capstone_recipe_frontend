@@ -14,9 +14,7 @@ const LoginForm = () => {
   const [formData, setFormData] = useState(INITIAL_STATE);
   let navigate = useNavigate();
 
-  const { loading, userInfo, error, success } = useSelector(
-    (store) => store.auth
-  );
+  const { userInfo, userToken } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
   //   const [err, documentErrors, showFormError] = useErrors();
@@ -26,11 +24,12 @@ const LoginForm = () => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      console.log(formData, "submitted");
-      dispatch(loginUser(formData));
+      //   console.log(formData, "submitted");
+      //   dispatch(loginUser(formData));
 
-      let token = await WhiskApi.userLogin(formData);
-      WhiskApi.token = token;
+      //   let token = await WhiskApi.userLogin(formData);
+      dispatch(loginUser(formData));
+      WhiskApi.token = userToken;
       //   console.log(token);
       //   loginUser(formData.username, token);
       navigate("/");

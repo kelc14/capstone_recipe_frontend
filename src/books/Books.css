@@ -1,0 +1,45 @@
+.Books {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Books-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Books-header-username {
+  font-size: 2rem;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.Books-add-new {
+  color: var(--theme-purple);
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+.Books-book {
+  background-color: var(--theme-orange);
+  border-radius: 10px;
+  width: 35%;
+  min-width: 150px;
+  max-width: 300px;
+  margin: 10px;
+  color: var(--theme-beige);
+  font-weight: 700;
+}
+.Books-book-thumbnail-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.Books-book-thumbnail {
+  width: 30%;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 // import orangeWLogo from "../images/w_logo_orange.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -26,20 +26,18 @@ const NavBar = () => {
   const { userInfo, userToken } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
+  // check to see if there is a userToken => add to Whisk API and if there is no userInfo -> update state
   if (userToken) {
     WhiskApi.token = userToken;
+    if (!userInfo) {
+      const { username } = jwt_decode(userToken);
+      const getUserInfo = async () => {
+        let userData = await WhiskApi.getUserDetails(username);
+        dispatch(updateUserInfo(userData));
+      };
+      getUserInfo(username);
+    }
   }
-
-  //   useEffect();
-  //   if (userToken && !userInfo) {
-  //     WhiskApi.token = userToken;
-  //     const { username } = jwt_decode(userToken);
-  //     const getUserInfo = async () => {
-  //       let userData = await WhiskApi.getUserDetails(username);
-  //       dispatch(updateUserInfo(userData));
-  //     };
-  //     getUserInfo(username);
-  //   }
 
   //   let userToken = null;
   const handleLogout = () => {
@@ -73,7 +71,9 @@ const NavBar = () => {
         </div>
 
         <div className="NavBar-div NavBar-dropdown">
-          <button className="NavBar-dropdown-btn">K</button>
+          <button className="NavBar-dropdown-btn">
+            {userInfo.firstName.charAt(0).toUpperCase()}
+          </button>
           <div className="NavBar-dropdown-content">
             <NavLink to="/profile " className="NavBar-dropdown-content-links">
               Profile
@@ -118,7 +118,7 @@ const NavBar = () => {
         </div>
       </li>
 
-      {userToken ? authLinks() : anonLinks()}
+      {userInfo ? authLinks() : anonLinks()}
     </ul>
   );
 };

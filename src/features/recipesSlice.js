@@ -23,6 +23,16 @@ export const getRecipes = createAsyncThunk(
   }
 );
 
+// // Get Recipes: () => [all recipes]
+// export const getMoreRecipes = createAsyncThunk(
+//   // 1. action type string
+//   "recipes/getRecipes",
+//   // 2. callback function
+//   async (thunkAPI) => {
+//     return await WhiskApi.getRandomRecipes();
+//   }
+// );
+
 // // Add Post: (post) => {post}
 // export const addPost = createAsyncThunk(
 //   // 1. action type string
@@ -50,6 +60,16 @@ export const recipesSlice = createSlice({
     [getRecipes.rejected]: (state) => {
       state.loading = false;
     },
+    // [getMoreRecipes.pending]: (state) => {
+    //   state.loading = true;
+    // },
+    // [getMoreRecipes.fulfilled]: (state, { payload }) => {
+    //   state.loading = false;
+    //   state.recipes = [...state.recipes, ...payload];
+    // },
+    // [getMoreRecipes.rejected]: (state) => {
+    //   state.loading = false;
+    // },
     // [addPost.pending]: (state) => {
     //   state.loading = true;
     // },

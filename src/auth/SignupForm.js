@@ -3,6 +3,9 @@ import "./SignupForm.css";
 // import JoblyApi from "../api/api";
 // import useErrors from "../hooks/useErrors";
 import { useNavigate } from "react-router-dom";
+import WhiskApi from "../api/api";
+import { signupUser } from "../features/authActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const SignUpForm = () => {
   const INITIAL_STATE = {
@@ -13,16 +16,27 @@ const SignUpForm = () => {
     email: "",
   };
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const { userInfo, userToken } = useSelector((store) => store.auth);
+
   let navigate = useNavigate();
+  let dispatch = useDispatch();
   //   const [err, documentErrors, showFormError] = useErrors();
+
   /** Send {USERNAME, PASSWORD} to API to check if logged in and provide feedback
    *    & clear form. */
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      //   let token = await JoblyApi.userSignup(formData);
+      console.log("trying to sign up", formData);
+
+      dispatch(signupUser(formData));
+      //   WhiskApi.token = userToken;
+      //   console.log(WhiskApi.token, "this is the token");
       //   loginUser(formData.username, token);
+      navigate("/");
+      setFormData(INITIAL_STATE);
       console.log("signed up", formData);
+
       navigate("/");
     } catch (err) {
       //   documentErrors(err);

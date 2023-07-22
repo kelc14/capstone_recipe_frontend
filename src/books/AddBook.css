@@ -1,0 +1,83 @@
+.AddBook {
+  position: fixed;
+
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  z-index: 1;
+  overflow: auto;
+
+  background-color: rgb(0, 0, 0); /* backup color*/
+  background-color: rgba(0, 0, 0, 0.4);
+
+  /* opacity: 1;
+  visibility: visible; */
+  border-radius: 10px;
+}
+
+.AddBook-content {
+  background: var(--theme-beige);
+  margin: 15% auto;
+  padding: 20px;
+  border: 5px solid var(--theme-orange);
+  width: 80%;
+  border-radius: 10px;
+  position: relative;
+  /* transition: 1.1s ease-out; */
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; /* filter: blur(0);
+  transform: scale(1); */
+}
+.AddBook-header {
+  border-bottom: 1px solid gray;
+  padding: 1rem;
+  margin: 0px;
+}
+.AddBook-form {
+  padding: 1rem;
+  margin: 0 auto;
+  width: 50%;
+  display: grid;
+  grid-gap: 25px;
+}
+.AddBook-label {
+  font-size: 1.2rem;
+}
+.AddBook-input {
+  font-size: 1.2rem;
+  padding: 12px 10px;
+  border-radius: 8px;
+  border: 1px solid black;
+  text-align: center;
+  font-family: var(--theme-font-family);
+  background-color: var(--theme-beige);
+}
+.AddBook-add {
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 4rem;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  border: none;
+  cursor: pointer;
+  color: var(--theme-green);
+}
+.AddBook-cancel {
+  background-color: var(--theme-orange);
+  color: var(--theme-beige);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: 2px solid var(--theme-orange);
+}
+
+.AddBook-cancel:hover {
+  background-color: var(--theme-beige);
+  color: var(--theme-orange);
+}
