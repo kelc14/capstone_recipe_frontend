@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteBook } from "../features/authSlice";
+
 import "./Books.css";
+
 import NoBooks from "./NoBooks";
 import AddBook from "./AddBook";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import WhiskApi from "../api/api";
 
 const Books = () => {
-  const { userInfo, userToken } = useSelector((store) => store.auth);
+  const { userInfo } = useSelector((store) => store.auth);
   const [books, setBooks] = useState(!userInfo ? [] : userInfo.books);
 
+  const dispatch = useDispatch();
+
   const [showAddForm, setShowAddForm] = useState(false);
+
   // toggle showing modal (add book form)
   const showModal = () => {
     setShowAddForm(() => !showAddForm);
@@ -19,8 +26,14 @@ const Books = () => {
 
   // add new book after filling out form:
   const addBook = (newBook) => {
-    // delete newBook.username;
     setBooks(() => [...books, newBook]);
+  };
+
+  // delete book
+  const handleDelete = (id) => {
+    WhiskApi.deleteBook(id);
+    dispatch(deleteBook(id));
+    setBooks(() => userInfo.books);
   };
 
   // RETURNING =>
@@ -29,7 +42,10 @@ const Books = () => {
 
   if (books.length === 0) {
     return (
-      <NoBooks showModal={showModal} show={showAddForm} addBook={addBook} />
+      <div>
+        <NoBooks showModal={showModal} />
+        <AddBook showModal={showModal} show={showAddForm} addBook={addBook} />
+      </div>
     );
   }
 
@@ -55,6 +71,7 @@ const Books = () => {
             ))} */}
             </div>
             <p>{book.title}</p>
+            <button onClick={() => handleDelete(book.id)}>DELETE</button>
           </div>
         ))}
       </div>{" "}

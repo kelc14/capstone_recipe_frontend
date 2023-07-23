@@ -25,6 +25,11 @@ const authSlice = createSlice({
       state.userInfo = null;
       state.userToken = null;
     },
+    deleteBook: (state, action) => {
+      state.userInfo.books = state.userInfo.books.filter(
+        (book) => book.id !== action
+      );
+    },
   },
   extraReducers: {
     // login user
@@ -59,6 +64,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { updateUserInfo, logoutUser } = authSlice.actions;
+export const { updateUserInfo, logoutUser, deleteBook } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -131,6 +131,17 @@ class WhiskApi {
     return res.book;
   }
 
+  //   /** Delete Book for user => deleted
+  //    *  { title, username }
+  //    *  => {id, title, username}
+  //    *
+  //    */
+
+  static async deleteBook(id) {
+    let res = await this.request(`book/${id}`, {}, "delete");
+    return res;
+  }
+
   //   /** PATCH user
   //    * data: { formData: firstName, lastName, email }
   //    *  => { user }

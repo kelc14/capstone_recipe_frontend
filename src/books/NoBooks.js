@@ -1,12 +1,7 @@
 import React from "react";
-import AddBook from "./AddBook";
 import "./NoBooks.css";
 
-const NoBooks = ({ showModal, showAddForm }) => {
-  //   const [showAddForm, setShowAddForm] = useState(false);
-  //   const showBook = () => {
-  //     setShowAddForm(() => !showAddForm);
-  //   };
+const NoBooks = ({ showModal }) => {
   return (
     <div className="NoBooks">
       <h3 className="NoBooks-header">Hmm... you don't have any books yet!</h3>
@@ -23,7 +18,6 @@ const NoBooks = ({ showModal, showAddForm }) => {
       <button className="NoBooks-add-btn" onClick={showModal}>
         Add One Now!
       </button>
-      <AddBook showModal={showModal} show={showAddForm} />
     </div>
   );
 };
