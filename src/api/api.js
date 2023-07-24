@@ -157,6 +157,19 @@ class WhiskApi {
     return res;
   }
 
+  //   /** Add recipe to book
+  //    *  { bookId, recipeURI }
+  //    *  => {added: [....]}
+  //    *      **
+  //    */
+
+  static async addRecipeToBook(data) {
+    let res = await this.request(`book/recipe/add`, data, "post");
+    return res;
+  }
+
+  //   CALENDAR ROUTES ********************************************************************************
+
   /** get user calendar
   //    * calendar: { username, monday, tuesday, wednesday, thursday, friday, saturday, sunday }
   //    *  => { calendar }
@@ -178,17 +191,6 @@ class WhiskApi {
     let res = await this.request(`calendar/${data.username}`, data, "patch");
     return res;
   }
-
-  //   /** APPLY for a JOB
-  //    * { username, jobId}
-  //    *  => { applied: jobId }
-  //    *      **
-  //    */
-
-  //   static async applyForJob(username, jobId) {
-  //     let res = await this.request(`users/${username}/jobs/${jobId}`, {}, "post");
-  //     return res;
-  //   }
 }
 
 export default WhiskApi;

@@ -17,6 +17,7 @@ import Books from "./books/Books";
 import Calendar from "./calendar/Calendar";
 import Profile from "./profile/Profile";
 import Nav from "./nav_and_routes/Nav";
+import AddToBook from "./books/AddToBook";
 
 /** App component
  * - top level component that renders the header and all routes:
@@ -62,6 +63,15 @@ function App() {
           element={
             <ProtectedRoutes>
               <Books />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/add/:uri"
+          element={
+            <ProtectedRoutes>
+              <AddToBook />
             </ProtectedRoutes>
           }
         />
