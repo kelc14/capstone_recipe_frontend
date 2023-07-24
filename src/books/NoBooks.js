@@ -1,6 +1,14 @@
 import React from "react";
 import "./NoBooks.css";
 
+/** NoBooks Component:
+ *
+ *      displayed if a user has no books - just an "about" page about what books are
+ *
+ *      displays a button to add a new book
+ *
+ */
+
 const NoBooks = ({ showModal }) => {
   return (
     <div className="NoBooks">

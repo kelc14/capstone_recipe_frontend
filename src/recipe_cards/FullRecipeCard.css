@@ -1,0 +1,175 @@
+/* Container for Modal - entire screen */
+.FullRecipeCard {
+  position: fixed;
+
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  z-index: 1;
+  overflow: auto;
+
+  background-color: rgb(0, 0, 0); /* backup color*/
+  background-color: rgba(0, 0, 0, 0.4); /* creates opacity on the background*/
+  border-radius: 10px;
+}
+
+/* Viewable Modal Content - partial screen */
+.FullRecipeCard-content {
+  background: var(--theme-beige);
+  margin: 10% auto;
+  padding: 20px;
+  border: 5px solid var(--theme-orange);
+  width: 80%;
+  border-radius: 10px;
+  position: relative;
+  /* transition: 1.1s ease-out; */
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; /* filter: blur(0);
+    transform: scale(1); */
+}
+/* Container for image & about info (name, etc.) */
+.FullRecipeCard-header {
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+
+  grid-template-rows: auto;
+  column-gap: 10px;
+}
+.FullRecipeCard-header-image {
+  width: 100%;
+  border-radius: 8px;
+}
+.FullRecipeCard-header-label {
+  top: 0;
+  margin: 0;
+  text-align: left;
+}
+/* Container for meal types AND reviews table */
+.FullRecipeCard-header-about {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+
+  grid-template-rows: auto;
+  column-gap: 10px;
+  text-align: left;
+}
+
+/* Reviews table - 3 columns
+
+    => "Your/Community Rating"
+    => Stars
+    => Button to Leave / View Reviews
+*/
+.FullRecipeCard-table-description {
+  font-weight: 700;
+}
+.FullRecipeCard-table-buttons {
+  padding: 10px;
+}
+.FullRecipeCard-table-stars {
+  color: var(--theme-orange);
+  padding: 10px;
+}
+
+/* Recipe Card Body (lower half of recipe card) */
+
+.FullRecipeCard-body {
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+
+  grid-template-rows: auto;
+  column-gap: 10px;
+}
+
+/* Left & Lower side of recipe card -> 
+
+        => user Tried
+        => user Notes
+
+*/
+
+.FullRecipeCard-user-info {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+.FullRecipeCard-user-tried {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.FullRecipeCard-user-tried span {
+  font-size: 1.5rem;
+}
+.FullRecipeCard-user-notes {
+  background-color: white;
+  border-radius: 8px;
+  width: 80%;
+  height: clamp(100px, 200px, 400px);
+  margin-top: 20px;
+  text-align: left;
+  padding: 10px;
+}
+
+/* Purple DropDown Lists (btns) */
+
+.FullRecipeCard-recipe-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.FullReicpeCard-recipe-info-buttons {
+  color: var(--theme-beige);
+
+  background-color: var(--theme-purple);
+  width: 100%;
+  height: 30%;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--theme-font-family);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* buttons */
+
+.FullRecipeCard-calendar-btn {
+  background-color: var(--theme-purple);
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 6px 10px;
+  font-family: var(--theme-font-family);
+  font-size: 1rem;
+}
+.FullRecipeCard-cancel {
+  background-color: var(--theme-orange);
+  color: var(--theme-beige);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: 2px solid var(--theme-orange);
+}
+
+.FullRecipeCard-cancel:hover {
+  background-color: var(--theme-beige);
+  color: var(--theme-orange);
+}
+
+.FullRecipeCard-review-btns {
+  background-color: var(--theme-green);
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 6px 10px;
+  font-family: var(--theme-font-family);
+  font-size: 1rem;
+}

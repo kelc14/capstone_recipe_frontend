@@ -57,7 +57,7 @@ class WhiskApi {
   //     return res.jobs;
   //   }
 
-  //   // USER ROUTES
+  //   // USER ROUTES ********************************************************************************
 
   //   /** Login
   //    * data: { username, password}
@@ -98,6 +98,8 @@ class WhiskApi {
     return res.user;
   }
 
+  //   RECIPE ROUTES ********************************************************************************
+
   //   /** Get random recipes
   //    *  {  }
   //    *  => {recipes: [....]}
@@ -105,9 +107,22 @@ class WhiskApi {
   //    */
 
   static async getRandomRecipes() {
-    let res = await this.request(`recipe`);
+    let res = await this.request(`api/recipe`);
     return res.recipes;
   }
+
+  //   /** Get single recipe by id
+  //    *  {  }
+  //    *  => {recipe: [....]}
+  //    *      **
+  //    */
+
+  static async getSingleRecipe(shortenedUri) {
+    let res = await this.request(`api/recipe/${shortenedUri}`);
+    return res.recipe;
+  }
+
+  //   BOOK ROUTES ********************************************************************************
 
   //   /** For book id => get first 6 recipe thumbnails
   //    *  {  }
@@ -142,16 +157,27 @@ class WhiskApi {
     return res;
   }
 
-  //   /** PATCH user
-  //    * data: { formData: firstName, lastName, email }
-  //    *  => { user }
+  /** get user calendar
+  //    * calendar: { username, monday, tuesday, wednesday, thursday, friday, saturday, sunday }
+  //    *  => { calendar }
   //    *      **
   //    */
 
-  //   static async updateUserDetails(data, username) {
-  //     let res = await this.request(`users/${username}`, data, "patch");
-  //     return res;
-  //   }
+  static async getCalendar(username) {
+    let res = await this.request(`calendar/${username}`);
+    return res;
+  }
+
+  //   /** PATCH calendar
+  //    * data: { username, day, uri}
+  //    *  => { calendar }
+  //    *      **
+  //    */
+
+  static async updateCalendar(data) {
+    let res = await this.request(`calendar/${data.username}`, data, "patch");
+    return res;
+  }
 
   //   /** APPLY for a JOB
   //    * { username, jobId}

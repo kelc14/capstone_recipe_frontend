@@ -11,9 +11,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import WhiskApi from "../api/api";
 
+/** Books Component:
+ *
+ * Using userInfo -> displays user's collection of books (if they have any)
+ *
+ * If the user does not have any books, renders NoBooks
+ *
+ * Also renders AddBook (form to add new books) and controls handleDelete to delete books.
+ *
+ */
 const Books = () => {
   const { userInfo } = useSelector((store) => store.auth);
-  const [books, setBooks] = useState(!userInfo ? [] : userInfo.books);
+  const [books, setBooks] = useState(userInfo.books);
 
   const dispatch = useDispatch();
 

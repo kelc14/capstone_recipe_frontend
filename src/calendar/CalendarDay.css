@@ -1,0 +1,69 @@
+.CalendarDay {
+  /* background-color: var(--theme-purple); */
+  border-radius: 10px;
+  min-height: 100px;
+  margin: 25px;
+  width: 90%;
+  /* min-width: 150px;
+  max-width: 300px; */
+}
+.CalendarDay-header {
+  border-bottom: 1px solid var(--theme-purple);
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+}
+
+.CalendarDay-button-container {
+  position: relative;
+}
+
+.CalendarDay-clear {
+  border: none;
+  background-color: var(--theme-purple);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px;
+  color: white;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.CalendarDay-clear:hover {
+  background-color: white;
+  color: var(--theme-purple);
+  border: 1px solid var(--theme-purple);
+}
+.CalendarDay-day {
+  color: purple;
+  font-weight: 700;
+  text-align: left;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.CalendarDay-recipe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.CalendarDay-img {
+  border-radius: 8px;
+}
+.CalendarDay-label {
+  font-weight: 700;
+}
+
+.CalendarDay-ingredients {
+  text-align: left;
+}
+
+.CalendarDay-ingredients ul {
+  list-style-type: circle;
+}
+
+.CalendarDay-norecipe {
+  width: 80%;
+  margin: 0 auto;
+}

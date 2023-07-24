@@ -4,7 +4,7 @@ import { getRecipes, getMoreRecipes } from "../features/recipesSlice";
 import "./Home.css";
 
 import AnonHome from "./AnonHome";
-import Recipe from "../books/Recipe";
+import RecipeCard from "../recipe_cards/RecipeCard";
 import SomethingWentWrong from "../errors/SomethingWentWrong";
 import WhiskApi from "../api/api";
 import jwt_decode from "jwt-decode";
@@ -28,7 +28,7 @@ const Home = () => {
   const { recipes, loading } = useSelector((store) => store.recipes);
   const { userInfo, userToken } = useSelector((store) => store.auth);
 
-  // fetch posts when site loads
+  // fetch recipes when site loads
   useEffect(() => {
     dispatch(getRecipes());
   }, [userToken]);
@@ -47,7 +47,7 @@ const Home = () => {
     return (
       <div className="Home-recipe-container">
         {recipes.map((obj) => (
-          <Recipe recipe={obj.recipe} key={obj.recipe.uri} />
+          <RecipeCard recipe={obj.recipe} key={obj.recipe.uri} />
         ))}
 
         {/* <button onClick={addMore}>Add more recipes</button> */}

@@ -1,0 +1,17 @@
+.AddToCalendar-form {
+  background-color: var(--theme-green);
+  padding: 5px;
+  border: none;
+  border-radius: 8px;
+}
+
+.AddToCalendar-form select {
+  border: none;
+  background-color: var(--theme-green);
+  font-family: var(--theme-font-family);
+}
+.AddToCalendar-form button {
+  border: none;
+  background-color: var(--theme-orange);
+  font-family: var(--theme-font-family);
+}
