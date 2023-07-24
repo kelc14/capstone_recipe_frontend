@@ -4,26 +4,31 @@ import "./CalendarDay.css";
 
 const CalendarDay = ({ day, uri, handleClear }) => {
   const [recipe, setRecipe] = useState({});
-  const [loading, setLoading] = useState(true);
+  //   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (uri !== null) {
+    if (uri) {
       const getRecipe = async () => {
-        // http://www.edamam.com/ontologies/edamam.owl#recipe_62197682cae0754d80f21333364b3f9c
-        let shortenedUri = uri.slice(44);
         try {
-          let recipe = await WhiskApi.getSingleRecipe(shortenedUri);
-          setRecipe(() => ({ ...recipe }));
+          let shortenedUri = uri.slice(44);
 
-          console.log(recipe);
+          let res = await WhiskApi.getSingleRecipe(shortenedUri);
+          setRecipe(() => ({ ...res }));
         } catch (e) {}
       };
       getRecipe();
     }
-    setLoading(() => false);
+    // setLoading(() => false);
+    // console.log("this ran again too");
   }, [uri]);
 
-  if (loading) return <p>loading...</p>;
+  const clearDay = () => {
+    uri = null;
+    setRecipe(() => ({}));
+    handleClear(day);
+  };
+
+  //   if (loading) return <p>loading...</p>;
 
   return (
     <div className="CalendarDay">
@@ -31,10 +36,7 @@ const CalendarDay = ({ day, uri, handleClear }) => {
         <p className="CalendarDay-day">{day.toUpperCase()}</p>
         {uri !== null && (
           <div className="CalendarDay-button-container">
-            <button
-              className="CalendarDay-clear"
-              onClick={() => handleClear(day)}
-            >
+            <button className="CalendarDay-clear" onClick={clearDay}>
               Clear
             </button>
           </div>
@@ -42,7 +44,13 @@ const CalendarDay = ({ day, uri, handleClear }) => {
       </div>
 
       <div className="CalendarDay-body">
-        {uri && (
+        {!uri && (
+          <p className="CalendarDay-norecipe">
+            You haven't added a recipe for this day yet. Explore your books or
+            search recipes to find the perfect meal.
+          </p>
+        )}
+        {Object.keys(recipe).length > 0 && (
           <div className="CalendarDay-recipe">
             <div className="CalendarDay-about">
               <img
@@ -61,13 +69,6 @@ const CalendarDay = ({ day, uri, handleClear }) => {
               </ul>
             </div>
           </div>
-        )}
-
-        {!uri && (
-          <p className="CalendarDay-norecipe">
-            You haven't added a recipe for this day yet. Explore your books or
-            search recipes to find the perfect meal.
-          </p>
         )}
       </div>
     </div>

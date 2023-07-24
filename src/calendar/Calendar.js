@@ -13,9 +13,7 @@ const Calendar = () => {
     const getCalendar = async () => {
       try {
         // WhiskApi.token = localStorage.userToken;
-
         let cal = await WhiskApi.getCalendar(username);
-
         setCalendar(() => ({ ...cal.calendar }));
         console.log(calendar);
       } catch (e) {}
@@ -23,9 +21,14 @@ const Calendar = () => {
     getCalendar();
   }, []);
 
-  const handleClear = (day) => {
-    console.log("this ran");
-    calendar[day] = null;
+  const handleClear = async (day) => {
+    console.log("ran!");
+    let calendar = WhiskApi.updateCalendar({
+      username: userInfo.username,
+      day: day,
+      uri: null,
+    });
+    setCalendar(() => ({ ...calendar }));
   };
 
   return (

@@ -27,9 +27,9 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   // check to see if there is a userToken => add to Whisk API and if there is no userInfo -> update state
-  if (userToken) {
+  if (userToken !== null) {
     WhiskApi.token = userToken;
-    if (!userInfo) {
+    if (userInfo === null) {
       const { username } = jwt_decode(userToken);
       const getUserInfo = async () => {
         let userData = await WhiskApi.getUserDetails(username);

@@ -42,8 +42,8 @@ const AddToCalendar = ({ uri }) => {
     <div className="AddToCalendar" onSubmit={handleSubmit}>
       <form className="AddToCalendar-form">
         Add to Calendar <br />
-        <select name="day" id="day" onChange={handleChange}>
-          <option value="" selected disabled hidden>
+        <select name="day" id="day" onChange={handleChange} defaultValue={""}>
+          <option value="" disabled hidden>
             Choose a Day:
           </option>
           <option value="sunday" id="sunday" className="AddBook-input">
