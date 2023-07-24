@@ -9,7 +9,7 @@ const initialState = {
   loading: false,
 };
 
-/** Async Functions for Comments:
+/** Async Functions for Recipes:
  * - Get Recipes (ALL)
  */
 
@@ -20,6 +20,16 @@ export const getRecipes = createAsyncThunk(
   // 2. callback function
   async (thunkAPI) => {
     return await WhiskApi.getRandomRecipes();
+  }
+);
+
+// Get Recipes: () => [all recipes]
+export const getRecipesByQuery = createAsyncThunk(
+  // 1. action type string
+  "recipes/getRecipes",
+  // 2. callback function
+  async ({ search }, { rejectWithValue }) => {
+    return await WhiskApi.getRecipesByQuery({ search });
   }
 );
 
@@ -68,6 +78,16 @@ export const recipesSlice = createSlice({
       state.recipes = payload;
     },
     [getRecipes.rejected]: (state) => {
+      state.loading = false;
+    },
+    [getRecipesByQuery.pending]: (state) => {
+      state.loading = true;
+    },
+    [getRecipesByQuery.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.recipes = payload;
+    },
+    [getRecipesByQuery.rejected]: (state) => {
       state.loading = false;
     },
     [getSingleRecipe.pending]: (state) => {

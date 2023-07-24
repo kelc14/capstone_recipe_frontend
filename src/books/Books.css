@@ -30,11 +30,49 @@
   width: 35%;
   min-width: 150px;
   max-width: 300px;
+  /* height: clamp(150px, 200px, 300px); */
   margin: 10px;
   color: var(--theme-beige);
   font-weight: 700;
 }
-.Books-book-thumbnail-container {
+.Books-book-icon-container {
+  display: inline;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  cursor: pointer;
+}
+.Books-book-icon {
+  padding-top: 10px;
+}
+
+.Books-book-header {
+  border-bottom: 1px solid white;
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+}
+.Books-book-title {
+  text-align: left;
+  padding: 10px;
+  margin: 0;
+  font-size: clamp(1rem, 1.2rem, 1.5rem);
+}
+
+.Books-book-logo {
+  max-height: 100px;
+  margin: 10px;
+}
+
+.Books-view-recipes-btn {
+  border: none;
+  border-radius: 8px;
+  background-color: var(--theme-beige);
+  padding: 5px 10px;
+  font-family: var(--theme-font-family);
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+/* .Books-book-thumbnail-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -42,4 +80,4 @@
 }
 .Books-book-thumbnail {
   width: 30%;
-}
+} */

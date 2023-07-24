@@ -13,7 +13,7 @@ import WhiskApi from "../api/api";
  * => Acts as a link- when clicked renders FullRecipeCard
  */
 
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ recipe, added }) => {
   const [showRecipe, setShowRecipe] = useState(false);
   const navigate = useNavigate();
 
@@ -24,15 +24,13 @@ const RecipeCard = ({ recipe }) => {
 
   const handleAddToBook = (uri) => {
     WhiskApi.token = localStorage.userToken;
-    try {
-      WhiskApi.addRecipeToDB({
-        uri: recipe.uri,
-        label: recipe.label,
-        image: recipe.image,
-      });
-    } catch (e) {}
+    let added = WhiskApi.addRecipeToDB({
+      uri: recipe.uri,
+      label: recipe.label,
+      image: recipe.image,
+    });
+
     let shortenedUri = uri.slice(44);
-    console.log(shortenedUri);
     navigate(`/add/${shortenedUri}`);
   };
 
@@ -43,6 +41,7 @@ const RecipeCard = ({ recipe }) => {
           src={recipe.image}
           className="Recipe-img"
           onClick={() => showModal(recipe.uri)}
+          alt={`food`}
         />
         <div className="Recipe-about">
           <div
@@ -51,12 +50,17 @@ const RecipeCard = ({ recipe }) => {
           >
             <b>{recipe.label}</b>
           </div>
-          <div
-            className="Recipe-plus-btn-container"
-            onClick={() => handleAddToBook(recipe.uri)}
-          >
-            <FontAwesomeIcon icon={faPlusCircle} className="Recipe-plus-btn" />
-          </div>
+          {!added && (
+            <div
+              className="Recipe-plus-btn-container"
+              onClick={() => handleAddToBook(recipe.uri)}
+            >
+              <FontAwesomeIcon
+                icon={faPlusCircle}
+                className="Recipe-plus-btn"
+              />
+            </div>
+          )}
         </div>
       </div>
       {showRecipe && (

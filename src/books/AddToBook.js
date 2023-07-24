@@ -24,6 +24,7 @@ const AddToBook = () => {
       formData.bookId = +formData.bookId;
       console.log(formData);
       WhiskApi.token = localStorage.userToken;
+
       WhiskApi.addRecipeToBook(formData);
 
       navigate("/books");

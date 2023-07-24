@@ -23,15 +23,15 @@ import { updateUserInfo } from "../features/authSlice";
  */
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  const { recipes, loading } = useSelector((store) => store.recipes);
   const { userInfo, userToken } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
 
   // fetch recipes when site loads
   useEffect(() => {
     dispatch(getRecipes());
   }, [userToken]);
+
+  const { recipes, loading } = useSelector((store) => store.recipes);
 
   if (userInfo || userToken) {
     if (loading) return <p>Loading...</p>;
@@ -47,7 +47,7 @@ const Home = () => {
     return (
       <div className="Home-recipe-container">
         {recipes.map((obj) => (
-          <RecipeCard recipe={obj.recipe} key={obj.recipe.uri} />
+          <RecipeCard recipe={obj.recipe} key={obj.recipe.uri} added={false} />
         ))}
 
         {/* <button onClick={addMore}>Add more recipes</button> */}

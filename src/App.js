@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import "./variables.css";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -18,6 +18,7 @@ import Calendar from "./calendar/Calendar";
 import Profile from "./profile/Profile";
 import Nav from "./nav_and_routes/Nav";
 import AddToBook from "./books/AddToBook";
+import BookDetails from "./books/BookDetails";
 
 /** App component
  * - top level component that renders the header and all routes:
@@ -58,6 +59,16 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignUpForm />} />
+
+        <Route
+          path="/books/:id"
+          element={
+            <ProtectedRoutes>
+              <BookDetails />
+            </ProtectedRoutes>
+          }
+        />
+
         <Route
           path="/books"
           element={

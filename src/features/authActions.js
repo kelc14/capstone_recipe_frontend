@@ -75,7 +75,6 @@ export const authenticateUser = createAsyncThunk(
       };
 
       const res = await axios.get(`${backendURL}/user/${username}`, config);
-      console.log(res.data, "from api backend");
 
       return { user: res.data.user, token };
     } catch (error) {

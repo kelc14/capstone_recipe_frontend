@@ -38,7 +38,6 @@ const LoginForm = () => {
       //   documentErrors(err);
     }
   };
-  /** setLoggedInContext */
   /** Update local state w/curr state of input elem */
   const handleChange = (evt) => {
     const { name, value } = evt.target;

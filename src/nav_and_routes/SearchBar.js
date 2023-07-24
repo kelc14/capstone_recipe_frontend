@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { getRecipesByQuery } from "../features/recipesSlice";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   /** SearchForm component
@@ -13,17 +16,19 @@ const SearchBar = () => {
 
   const INITIAL_STATE = { search: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   /** Send {USERNAME, PASSWORD} to API to check if logged in and provide feedback
    *    & clear form. */
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log(formData);
-
+    dispatch(getRecipesByQuery(formData));
     // if (formData.search !== "") {
     //   search(formData);
     // }
+    navigate("/");
     setFormData(INITIAL_STATE);
   };
 

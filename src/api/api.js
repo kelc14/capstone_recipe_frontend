@@ -110,6 +110,16 @@ class WhiskApi {
     let res = await this.request(`api/recipe`);
     return res.recipes;
   }
+  //   /** Get random recipes
+  //    *  {  }
+  //    *  => {recipes: [....]}
+  //    *      **
+  //    */
+
+  static async getRecipesByQuery({ search }) {
+    let res = await this.request(`api/recipe?search=${search}`);
+    return res.recipes;
+  }
 
   //   /** Get single recipe by id
   //    *  {  }
@@ -154,6 +164,16 @@ class WhiskApi {
 
   static async addNewBook(data) {
     let res = await this.request(`book/`, data, "post");
+    return res.book;
+  }
+
+  //   /** Update Book for user => book details in response
+  //    *  { title, id }
+  //    *  => {id, title, username}
+  //    *
+  //    */
+  static async updateBook(id, data) {
+    let res = await this.request(`book/${id}`, data, "patch");
     return res.book;
   }
 
