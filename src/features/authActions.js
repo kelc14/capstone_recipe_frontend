@@ -87,3 +87,32 @@ export const authenticateUser = createAsyncThunk(
     }
   }
 );
+
+export const updateUser = createAsyncThunk(
+  "user/:username",
+  async ({ username, firstName, lastName, email }, { rejectWithValue }) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.userToken}`,
+        },
+      };
+
+      const res = await axios.patch(
+        `${backendURL}/user/${username}`,
+        { firstName, lastName, email },
+        config
+      );
+
+      return res.data;
+    } catch (error) {
+      // return custom error message from backend if present
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);

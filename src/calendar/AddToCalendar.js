@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 
 import "./AddToCalendar.css";
 import WhiskApi from "../api/api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const AddToCalendar = ({ uri }) => {
   const INITIAL_STATE = { day: "" };
@@ -65,7 +67,9 @@ const AddToCalendar = ({ uri }) => {
             Saturday
           </option>
         </select>
-        <button>Add</button>
+        <button>
+          <FontAwesomeIcon icon={faPlus} />
+        </button>
       </form>
     </div>
   );

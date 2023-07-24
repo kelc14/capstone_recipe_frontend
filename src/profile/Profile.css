@@ -1,0 +1,50 @@
+.Profile-icon {
+  font-family: var(--theme-font-family);
+  font-size: 60px;
+  margin: 0 auto;
+  width: 80px;
+  margin-top: 25px;
+  padding: 60px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--theme-orange);
+  outline: none;
+  color: white;
+}
+
+.ProfileForm {
+  width: 70vw;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 5%;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.ProfileForm-form {
+  text-align: left;
+}
+.ProfileForm-label {
+  display: block;
+  padding-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.ProfileForm-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.ProfileForm-button {
+  background-color: var(--theme-green);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 16px 32px;
+  font-size: 1rem;
+  margin: 4px 2px;
+  cursor: pointer;
+}
