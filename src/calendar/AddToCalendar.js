@@ -17,12 +17,9 @@ const AddToCalendar = ({ uri }) => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      console.log(formData);
-
       // add day, username, uri to Calendar DB
       formData.username = userInfo.username;
       formData.uri = uri;
-      console.log(formData);
 
       WhiskApi.updateCalendar(formData);
 

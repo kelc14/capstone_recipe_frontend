@@ -6,7 +6,7 @@ import CalendarDay from "./CalendarDay";
 
 const Calendar = () => {
   const [calendar, setCalendar] = useState({});
-  const { userInfo, userToken } = useSelector((store) => store.auth);
+  const { userInfo } = useSelector((store) => store.auth);
 
   useEffect(() => {
     let username = userInfo.username;

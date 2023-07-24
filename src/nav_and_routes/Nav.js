@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Link, useNavigate } from "react-router-dom";
-// import orangeWLogo from "../images/w_logo_orange.png";
-import { useSelector, useDispatch } from "react-redux";
-import jwt_decode from "jwt-decode";
-import WhiskApi from "../api/api";
-import { updateUserInfo, logoutUser } from "../features/authSlice";
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import SearchBar from "./SearchBar";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 import "./Nav.css";
 
@@ -22,28 +17,8 @@ import "./Nav.css";
  *
  */
 
-const NavBar = () => {
-  const { userInfo, userToken } = useSelector((store) => store.auth);
-  const dispatch = useDispatch();
-
-  // check to see if there is a userToken => add to Whisk API and if there is no userInfo -> update state
-  if (userToken !== null) {
-    WhiskApi.token = userToken;
-    if (userInfo === null) {
-      const { username } = jwt_decode(userToken);
-      const getUserInfo = async () => {
-        let userData = await WhiskApi.getUserDetails(username);
-        dispatch(updateUserInfo(userData));
-      };
-      getUserInfo(username);
-    }
-  }
-
-  //   let userToken = null;
-  const handleLogout = () => {
-    localStorage.clear();
-    dispatch(logoutUser());
-  };
+const NavBar = ({ handleLogout }) => {
+  const { userInfo } = useSelector((store) => store.auth);
 
   const authLinks = () => {
     return (
@@ -75,7 +50,10 @@ const NavBar = () => {
             {userInfo.firstName.charAt(0).toUpperCase()}
           </button>
           <div className="NavBar-dropdown-content">
-            <NavLink to="/profile " className="NavBar-dropdown-content-links">
+            <NavLink
+              to={`/user/${userInfo.username}`}
+              className="NavBar-dropdown-content-links"
+            >
               Profile
             </NavLink>
             <NavLink
@@ -113,7 +91,11 @@ const NavBar = () => {
         <div className="Whisk-logo-txt">
           {" "}
           <Link to="/">
-            <img src="/images/w_logo_orange.png" className="Whisk-logo-img" />
+            <img
+              src="/images/w_logo_orange.png"
+              className="Whisk-logo-img"
+              alt="w whisk logo"
+            />
           </Link>
         </div>
       </li>

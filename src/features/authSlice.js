@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, signupUser } from "./authActions";
+import { authenticateUser, loginUser, signupUser } from "./authActions";
 
 // initialize userToken from local storage
 const userToken = localStorage.getItem("userToken")
@@ -39,8 +39,8 @@ const authSlice = createSlice({
     },
     [loginUser.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      //   state.userInfo = payload;
-      state.userToken = payload;
+      state.userInfo = payload.user;
+      state.userToken = payload.token;
     },
 
     [loginUser.rejected]: (state, { payload }) => {
@@ -53,11 +53,25 @@ const authSlice = createSlice({
     },
     [signupUser.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      //   state.userInfo = payload;
-      state.userToken = payload;
+      state.userInfo = payload.user;
+      state.userToken = payload.token;
     },
 
     [signupUser.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
+    [authenticateUser.pending]: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    [authenticateUser.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.userInfo = payload.user;
+      state.userToken = payload.token;
+    },
+
+    [authenticateUser.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     },
