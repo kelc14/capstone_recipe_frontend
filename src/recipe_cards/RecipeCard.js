@@ -48,7 +48,7 @@ const RecipeCard = ({ recipe, added }) => {
             className="Recipe-name-text"
             onClick={() => showModal(recipe.uri)}
           >
-            <b>{recipe.label}</b>
+            {recipe.label}
           </div>
           {!added && (
             <div

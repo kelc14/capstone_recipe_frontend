@@ -133,6 +133,35 @@
   cursor: pointer;
 }
 
+.FullRecipe-recipeinfo {
+  background-color: white;
+}
+
+.FullRecipe-ingredients {
+  list-style: none;
+  text-align: left;
+}
+.FullRecipe-directions-container {
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+  padding: 10px;
+}
+.FullRecipe-directions-container span {
+  width: 80%;
+}
+.FullRecipe-ExitWhisk {
+  background-color: var(--theme-purple);
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+}
+
+.FullRecipe-ExitWhisk a {
+  text-decoration: none;
+  color: white;
+}
+
 /* buttons */
 
 .FullRecipeCard-calendar-btn {

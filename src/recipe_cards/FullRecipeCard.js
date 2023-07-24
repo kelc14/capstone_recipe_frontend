@@ -5,6 +5,7 @@ import "./FullRecipeCard.css";
 import WhiskApi from "../api/api";
 import ToggleSwitch from "../common/ToggleSwitch";
 import AddToCalendar from "../calendar/AddToCalendar";
+import { Link } from "react-router-dom";
 
 const FullRecipeCard = ({ show, showModal, uri }) => {
   const [recipe, setRecipe] = useState({});
@@ -27,6 +28,8 @@ const FullRecipeCard = ({ show, showModal, uri }) => {
   const onClose = () => {
     showModal();
   };
+
+  console.log(recipe);
 
   // program to convert first letter of a string to uppercase
   function capitalizeFirstLetter(str) {
@@ -118,15 +121,30 @@ const FullRecipeCard = ({ show, showModal, uri }) => {
                 </div>
               </div>
               <div className="FullRecipeCard-recipe-info">
-                <button className="FullReicpeCard-recipe-info-buttons">
-                  <FontAwesomeIcon icon={faCaretDown} /> Nutritional Information
-                </button>
+                <div className="FullRecipe-recipeinfo"></div>
+
                 <button className="FullReicpeCard-recipe-info-buttons">
                   <FontAwesomeIcon icon={faCaretDown} /> Ingredients
                 </button>
+                <div className="FullRecipe-recipeinfo">
+                  <ul className="FullRecipe-ingredients">
+                    {recipe.ingredientLines.map((ingr) => (
+                      <li>- {ingr}</li>
+                    ))}
+                  </ul>
+                </div>
+
                 <button className="FullReicpeCard-recipe-info-buttons">
                   <FontAwesomeIcon icon={faCaretDown} /> Directions
                 </button>
+                <div className="FullRecipe-recipeinfo FullRecipe-directions-container">
+                  <span>
+                    Source: <Link to={`${recipe.source}`}>{recipe.source}</Link>
+                  </span>
+                  <div className="FullRecipe-ExitWhisk">
+                    <Link>Exit Whisk to View Directions</Link>
+                  </div>
+                </div>
               </div>
             </div>
             <button onClick={onClose} className="FullRecipeCard-cancel">

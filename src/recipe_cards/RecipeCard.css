@@ -33,7 +33,8 @@
   font-style: italic;
   margin: 10px;
   font-weight: 300;
-  width: 60%;
+  width: 100%;
+  font-weight: 700;
 }
 
 /* grid item */
