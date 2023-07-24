@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 import FullRecipeCard from "./FullRecipeCard";
 import "./RecipeCard.css";
-import AddToBook from "../books/AddToBook";
-import { useNavigate } from "react-router-dom";
+import WhiskApi from "../api/api";
 
 /** RecipeCard Component
  * => Displays small card with recipe information (title, image, add button)
@@ -18,11 +18,19 @@ const RecipeCard = ({ recipe }) => {
   const navigate = useNavigate();
 
   // toggle showing modal (add book form)
-  const showModal = (uri) => {
+  const showModal = () => {
     setShowRecipe(() => !showRecipe);
   };
 
   const handleAddToBook = (uri) => {
+    WhiskApi.token = localStorage.userToken;
+    try {
+      WhiskApi.addRecipeToDB({
+        uri: recipe.uri,
+        label: recipe.label,
+        image: recipe.image,
+      });
+    } catch (e) {}
     let shortenedUri = uri.slice(44);
     console.log(shortenedUri);
     navigate(`/add/${shortenedUri}`);

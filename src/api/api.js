@@ -122,6 +122,17 @@ class WhiskApi {
     return res.recipe;
   }
 
+  //   /** Add Recipe to DB if it is not already ->
+  //    *  {  }
+  //    *  => {recipe: [....]}
+  //    *      **
+  //    */
+
+  static async addRecipeToDB(data) {
+    let res = await this.request(`recipe/`, data, "post");
+    return res.recipe;
+  }
+
   //   BOOK ROUTES ********************************************************************************
 
   //   /** For book id => get first 6 recipe thumbnails

@@ -18,8 +18,6 @@ const FullRecipeCard = ({ show, showModal, uri }) => {
         let recipe = await WhiskApi.getSingleRecipe(shortenedUri);
         setRecipe(() => ({ ...recipe }));
         setLoading(() => false);
-
-        console.log(recipe);
       } catch (e) {}
     };
     getRecipe();
