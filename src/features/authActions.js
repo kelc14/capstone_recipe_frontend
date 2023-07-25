@@ -85,7 +85,9 @@ export const signupUser = createAsyncThunk(
       };
       const result = await axios.get(`${backendURL}/user/${username}`, config);
 
-      return result.data;
+      let user = result.data.user;
+      let token = res.data.token;
+      return { user, token };
     } catch (error) {
       // return custom error message from backend if present
       if (error.response && error.response.data.error.message) {
