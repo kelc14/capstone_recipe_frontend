@@ -1,17 +1,12 @@
-.BookDetails {
-}
 .BookDetails-header {
   border-bottom: 1px solid var(--theme-purple);
 }
-.BookDetails-body {
-}
+
 .BookDetails-title {
   font-size: 2rem;
   color: purple;
   text-align: left;
   font-weight: 700;
-}
-.BookDetails {
 }
 
 .BookDetails-browse-btn {

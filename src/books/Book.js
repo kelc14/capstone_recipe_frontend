@@ -1,16 +1,32 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faX } from "@fortawesome/free-solid-svg-icons";
-import EditBook from "./EditBook";
 import "./Book.css";
+
 import { NavLink } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faX } from "@fortawesome/free-solid-svg-icons";
+
+// components:
+import EditBook from "./EditBook";
+
+// images to rotate for the book covers
 const IMAGES = [
   "/images/book_icons/cook1.png",
   "/images/book_icons/cook2.png",
   "/images/book_icons/cook3.png",
   "/images/book_icons/cook4.png",
 ];
+
+/** Book Component =>
+ *
+ *        Renders orange book icon on Books page.
+ *
+ *        Accepts prop: {book}  => includes title and id for the book
+ *        Accepts props for EditBook => {handleEdit, handleDelete, showEditModal, showEditForm, updateBook}
+ *
+ *        Renders EditBook
+ *
+ */
 
 const Book = ({
   book,

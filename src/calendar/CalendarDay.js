@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import WhiskApi from "../api/api";
 import "./CalendarDay.css";
 
+/** CalendarDay Component
+ *
+ * -> Renders individual day details on the calendar
+ *
+ *
+ */
+
 const CalendarDay = ({ day, uri, handleClear }) => {
   const [recipe, setRecipe] = useState({});
-  //   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (uri) {
@@ -51,16 +57,12 @@ const CalendarDay = ({ day, uri, handleClear }) => {
         {Object.keys(recipe).length > 0 && (
           <div className="CalendarDay-recipe">
             <div className="CalendarDay-about">
-              <img
-                src={recipe.image}
-                alt="recipe image"
-                className="CalendarDay-img"
-              />
+              <img src={recipe.image} alt="food" className="CalendarDay-img" />
               <p className="CalendarDay-label">{recipe.label}</p>
             </div>
             <div className="CalendarDay-ingredients">
               Ingredients:
-              <ul role="list">
+              <ul>
                 {recipe.ingredientLines.map((ingr) => (
                   <li>{ingr}</li>
                 ))}

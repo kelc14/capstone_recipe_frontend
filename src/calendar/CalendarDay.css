@@ -1,11 +1,8 @@
 .CalendarDay {
-  /* background-color: var(--theme-purple); */
   border-radius: 10px;
   min-height: 100px;
   margin: 25px;
   width: 90%;
-  /* min-width: 150px;
-  max-width: 300px; */
 }
 .CalendarDay-header {
   border-bottom: 1px solid var(--theme-purple);

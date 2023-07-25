@@ -4,6 +4,13 @@ import WhiskApi from "../api/api";
 
 const backendURL = "https://whisk-backend-kelc14.onrender.com";
 
+/** Authenticates user via login crendentials
+ *
+ * {username, password} => {user: {username, firstName, lastName, email, isAdmin}, token}
+ *
+ * sets localStorage userToken
+ */
+
 export const loginUser = createAsyncThunk(
   "auth/login",
   async ({ username, password }, { rejectWithValue }) => {
@@ -29,7 +36,9 @@ export const loginUser = createAsyncThunk(
       };
       const result = await axios.get(`${backendURL}/user/${username}`, config);
 
-      return result.data;
+      let user = result.data.user;
+      let token = res.data.token;
+      return { user, token };
     } catch (error) {
       console.log(error);
       // return custom error message from backend if present
@@ -41,6 +50,14 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+
+/** Creates user via input crendentials
+ *
+ * {username, password, firstName, lastName, email} => {user: {username, firstName, lastName, email, isAdmin}, token}
+ *
+ * sets localStorage userToken
+ *
+ */
 
 export const signupUser = createAsyncThunk(
   "auth/register",
@@ -81,6 +98,12 @@ export const signupUser = createAsyncThunk(
   }
 );
 
+/** authenticates user
+ *
+ * Given username and passwords, requests user info from backend
+ *
+ */
+
 export const authenticateUser = createAsyncThunk(
   "user/:username",
   async ({ username, token }, { rejectWithValue }) => {
@@ -105,6 +128,11 @@ export const authenticateUser = createAsyncThunk(
     }
   }
 );
+
+/** Updates user information by sending to the backend
+ *
+ * {username, firstName, lastName, email } => {userInfo}
+ */
 
 export const updateUser = createAsyncThunk(
   "user/:username",

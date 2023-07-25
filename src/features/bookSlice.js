@@ -12,7 +12,6 @@ const bookSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    // get details for single book
     [getBookDetails.pending]: (state) => {
       state.bookLoading = true;
       state.bookError = null;
@@ -41,7 +40,5 @@ const bookSlice = createSlice({
     },
   },
 });
-
-// export const { updateUserInfo, logoutUser, deleteBook } = authSlice.actions;
 
 export default bookSlice.reducer;

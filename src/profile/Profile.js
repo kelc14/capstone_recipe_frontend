@@ -4,6 +4,10 @@ import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 import { updateUser } from "../features/authActions";
 
+/** Profile Component
+ *
+ * Renders Profile Form - > For editing user information
+ */
 const Profile = () => {
   const { userInfo } = useSelector((store) => store.auth);
 

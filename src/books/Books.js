@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBook } from "../features/authSlice";
+import WhiskApi from "../api/api";
 
 import "./Books.css";
 
-import NoBooks from "./NoBooks";
-import AddBook from "./AddBook";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import WhiskApi from "../api/api";
+
+//components:
 import Book from "./Book";
+import NoBooks from "./NoBooks";
+import AddBook from "./AddBook";
 
 /** Books Component:
  *
@@ -18,7 +20,9 @@ import Book from "./Book";
  *
  * If the user does not have any books, renders NoBooks
  *
- * Also renders AddBook (form to add new books) and controls handleDelete to delete books.
+ * Also renders
+ * - AddBook (form to add new books) and controls handleDelete to delete books.
+ * - Book (icon with book title, edit and delete buttons)
  *
  */
 const Books = () => {
@@ -114,37 +118,6 @@ const Books = () => {
             updateBook={updateBook}
             key={book.id}
           />
-          //   <div className="Books-book" key={book.id}>
-          //     <div className="Books-book-header">
-          //       <div>
-          //         <h1 className="Books-book-title">{book.title.toUpperCase()}</h1>
-          //       </div>
-          //       <div onClick={() => handleEdit(book.id)}>
-          //         <div className="Books-book-icon-container">
-          //           <FontAwesomeIcon icon={faEdit} className="Books-book-icon" />{" "}
-          //         </div>
-          //         <div
-          //           className="Books-book-icon-container"
-          //           onClick={() => handleDelete(book.id)}
-          //         >
-          //           <FontAwesomeIcon className="Books-book-icon" icon={faX} />
-          //         </div>
-          //       </div>
-          //       <EditBook
-          //         showModal={showEditModal}
-          //         show={showEditForm}
-          //         updateBook={updateBook}
-          //         id={book.id}
-          //       />
-          //     </div>
-          //     <img
-          //       src={IMAGES[Math.floor(Math.random() * 4)]}
-          //       className="Books-book-logo"
-          //     />
-          //     <div>
-          //       <button className="Books-view-recipes-btn">View Recipes</button>
-          //     </div>
-          //   </div>
         ))}
       </div>
     </div>

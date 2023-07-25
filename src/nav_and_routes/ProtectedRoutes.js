@@ -3,6 +3,10 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 // import UserContext from "../hooks/UserContext";
 
+/** ProtectedRoutes Component:
+ *
+ * Authenticates user by redirecting to the homepage if there is no userToken
+ */
 const ProtectedRoutes = ({ children }) => {
   const { userToken } = useSelector((store) => store.auth);
 
@@ -11,4 +15,5 @@ const ProtectedRoutes = ({ children }) => {
   }
   return children;
 };
+
 export default ProtectedRoutes;

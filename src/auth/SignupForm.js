@@ -5,6 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { signupUser } from "../features/authActions";
 import { useDispatch } from "react-redux";
 
+/**
+ * SIGNUP FORM COMPONENT:
+ *
+ *        Renders form for signing up for Whisk account
+ *
+ *        Successful signup, logs user in and directs to homepage
+ *
+ *        Invalid username/password/email error handling
+ *
+ */
 const SignUpForm = () => {
   const INITIAL_STATE = {
     username: "",

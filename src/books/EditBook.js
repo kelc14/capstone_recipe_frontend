@@ -5,6 +5,15 @@ import { faX, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import "./EditBook.css";
 import WhiskApi from "../api/api";
 
+/**
+ *  EditBook Component: 
+ * 
+ *    - displays the form to edit book name
+ *    -this displays as a modal - props passed to control this: {show, showModal, updateBook, id}
+ 
+ *        State: useForm
+ *
+ */
 const EditBook = ({ show, showModal, updateBook, id }) => {
   const INITIAL_STATE = { title: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);

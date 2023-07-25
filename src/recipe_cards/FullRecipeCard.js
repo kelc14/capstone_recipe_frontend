@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX, faStar, faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faX, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import "./FullRecipeCard.css";
 import WhiskApi from "../api/api";
 // import ToggleSwitch from "../common/ToggleSwitch";
 import AddToCalendar from "../calendar/AddToCalendar";
 import { Link } from "react-router-dom";
 import AddToBook from "../books/AddToBook";
+
+/** FullRecipeCard Component:
+ *
+ * Displays many details about the recipe:
+ *  Title
+ *  Image
+ *  Ingredients
+ *  MealType/CuisineType/etc
+ *  AddToCalendar Component
+ *  AddToBook Component
+ *
+ *  Displays as a modal -
+ */
 
 const FullRecipeCard = ({ show, showModal, uri }) => {
   const [recipe, setRecipe] = useState({});
@@ -49,7 +62,11 @@ const FullRecipeCard = ({ show, showModal, uri }) => {
         {!loading && (
           <div className="FullRecipeCard-content">
             <div className="FullRecipeCard-header">
-              <img src={recipe.image} className="FullRecipeCard-header-image" />
+              <img
+                src={recipe.image}
+                className="FullRecipeCard-header-image"
+                alt="food"
+              />
               <div>
                 <h1 className="FullRecipeCard-header-label">{recipe.label}</h1>
                 <div className="FullRecipeCard-header-about">

@@ -1,22 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import "./BookDetails.css";
-import RecipeCard from "../recipe_cards/RecipeCard";
-import { getBookDetails } from "../features/bookActions";
+
 import { useDispatch, useSelector } from "react-redux";
+import { getBookDetails } from "../features/bookActions";
+
+// components
+import RecipeCard from "../recipe_cards/RecipeCard";
+
+import "./BookDetails.css";
+
+/** BookDetails Component:
+ *  -> displays webpage with icons for each of the users recipes in the book
+ *
+ *  -> if the user has no recipes, displays link for user to browse recipes on the homepage
+ *
+ *  > Renders: RecipeCard for each recipe within the books table for the user
+ *
+ */
 
 const BookDetails = () => {
   let { id } = useParams();
-  // const [isLoading, setIsLoading] = useState(() => true);
 
   const dispatch = useDispatch();
   const { book } = useSelector((store) => store.book);
 
   useEffect(() => {
     dispatch(getBookDetails({ id }));
-
-    // setIsLoading(() => false);
-  }, [id]);
+  }, [dispatch, id]);
 
   console.log("book", book);
 

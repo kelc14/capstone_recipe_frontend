@@ -21,7 +21,7 @@ import "./Nav.css";
  */
 
 const NavBar = ({ handleLogout }) => {
-  const { userInfo, userToken } = useSelector((store) => store.auth);
+  const { userInfo } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {

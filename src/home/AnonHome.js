@@ -2,6 +2,12 @@ import React from "react";
 import "./AnonHome.css";
 import Slideshow from "./slideshow/Slideshow";
 
+/** AnonHome
+ *
+ * => Homepage displays to non-authenticated users
+ *
+ * Renders: Slideshow
+ */
 const AnonHome = () => {
   return (
     <>

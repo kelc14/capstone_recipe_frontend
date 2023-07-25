@@ -30,8 +30,12 @@ import BookDetails from "./books/BookDetails";
  *
  * authenticated routes:
  *      Books       /books
+ *        BookDetails    /books/:id
  *      Calendar    /calendar
- *      Profile     /user/:username
+ *      Profile     /user/:username   
+ *   
+ *      Add Recipe to Book         /add/:uri             
+
  *
  *
  */
@@ -48,7 +52,7 @@ function App() {
         dispatch(authenticateUser({ username, token: WhiskApi.token }));
       }
     }
-  }, [userInfo]);
+  }, [dispatch, userToken, userInfo]);
 
   const handleLogout = () => {
     localStorage.clear();

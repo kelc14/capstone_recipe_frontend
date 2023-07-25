@@ -7,6 +7,15 @@ import WhiskApi from "../api/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
+/** AddToCalendar Component:
+ *
+ *  => Form displays dropdown for user to add a recipe (uri) to their calendar
+ *
+ *  Props: {uri}
+ *
+ *  Rendered in FullRecipeCard
+ *
+ */
 const AddToCalendar = ({ uri }) => {
   const INITIAL_STATE = { day: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);
@@ -28,9 +37,7 @@ const AddToCalendar = ({ uri }) => {
       navigate("/calendar");
 
       setFormData(INITIAL_STATE);
-    } catch (err) {
-      //   documentErrors(err);
-    }
+    } catch (err) {}
   };
   /** Update local state w/curr state of input elem */
   const handleChange = (e) => {

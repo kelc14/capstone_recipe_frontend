@@ -1,18 +1,31 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import "./AddBook.css";
+
+import { useDispatch, useSelector } from "react-redux";
+import { addBook } from "../features/authSlice";
 import WhiskApi from "../api/api";
 
+import "./AddBook.css";
+
+/**
+ *  AddBook Component: 
+ * 
+ *    - displays the form to add a new book for the user
+ *    -this displays as a modal - props passed to control this
+ 
+ *        State: useForm
+ *
+ */
 const AddBook = ({ show, showModal, addBookLocal }) => {
   const INITIAL_STATE = { title: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);
   let navigate = useNavigate();
   let dispatch = useDispatch();
 
-  const { userInfo, userToken } = useSelector((store) => store.auth);
+  const { userInfo } = useSelector((store) => store.auth);
 
   // toggle modal off
   const onClose = () => {
@@ -26,7 +39,7 @@ const AddBook = ({ show, showModal, addBookLocal }) => {
     try {
       formData.username = userInfo.username;
       const newBook = await WhiskApi.addNewBook(formData);
-      // dispatch(addBook(formData));
+      dispatch(addBook(formData));
 
       //toggle off modal:
       showModal();
@@ -47,6 +60,7 @@ const AddBook = ({ show, showModal, addBookLocal }) => {
     }));
   };
 
+  // if displaying, render component:
   if (show) {
     return (
       <div className="AddBook" onSubmit={handleSubmit}>

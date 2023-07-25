@@ -2,8 +2,17 @@ import React, { useEffect, useState } from "react";
 import "./Calendar.css";
 import WhiskApi from "../api/api";
 import { useSelector } from "react-redux";
+//component
 import CalendarDay from "./CalendarDay";
 
+/** Calendar Component:
+ *
+ * -> displays the user's calendar: Sunday-Friday
+ *
+ * handles editing calendar (clearing the day)
+ *
+ * -> Renders CalendarDay for each day
+ */
 const Calendar = () => {
   const [calendar, setCalendar] = useState({});
   const [isLoading, setIsLoading] = useState(true);

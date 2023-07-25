@@ -2,6 +2,9 @@ import React from "react";
 
 import "./SomethingWentWrong.css";
 
+/** SomethingWentWrong
+ *  => Displays Error page
+ */
 const SomethingWentWrong = () => {
   return (
     <div className="SomethingWentWrong">

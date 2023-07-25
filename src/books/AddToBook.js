@@ -5,6 +5,15 @@ import WhiskApi from "../api/api";
 
 import "./AddToBook.css";
 
+/** AddToBook Component:
+ *
+ *  -> displays form for the user to a recipe to their book
+ *  -> rendered from RecipeCard and FullRecipeCard
+ *
+ *  Accepts props: recipeURI (from FullRecipeCard only)
+ *  Otherwise collects uri from params
+ *
+ */
 const AddToBook = ({ recipeURI }) => {
   const INITIAL_STATE = { bookId: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);
@@ -21,7 +30,6 @@ const AddToBook = ({ recipeURI }) => {
     evt.preventDefault();
     try {
       // add day, username, uri to Calendar DB
-
       formData.recipeURI = `http://www.edamam.com/ontologies/edamam.owl#${uri}`;
       formData.bookId = +formData.bookId;
       WhiskApi.token = localStorage.userToken;
@@ -31,9 +39,7 @@ const AddToBook = ({ recipeURI }) => {
       navigate("/books");
 
       setFormData(INITIAL_STATE);
-    } catch (err) {
-      //   documentErrors(err);
-    }
+    } catch (err) {}
   };
   /** Update local state w/curr state of input elem */
   const handleChange = (e) => {

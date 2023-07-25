@@ -3,6 +3,11 @@ import axios from "axios";
 
 const backendURL = "https://whisk-backend-kelc14.onrender.com";
 
+/** Get book details from the backend
+ *
+ * {id} => {id, title, username, recipes: [...]}
+ *
+ */
 export const getBookDetails = createAsyncThunk(
   "book/:id",
   async ({ id }, { rejectWithValue }) => {
@@ -30,6 +35,9 @@ export const getBookDetails = createAsyncThunk(
     }
   }
 );
+/** Add New book to databse for user:
+ * {title, username} = > {id, title, username, recipes: [...]}
+ */
 export const addNewBook = createAsyncThunk(
   "book",
   async ({ title, username }, { rejectWithValue }) => {
