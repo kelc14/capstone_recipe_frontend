@@ -40,7 +40,6 @@ export const loginUser = createAsyncThunk(
       let token = res.data.token;
       return { user, token };
     } catch (error) {
-      console.log(error);
       // return custom error message from backend if present
       if (error.response && error.response.data.error.message) {
         return rejectWithValue(error.response.data.error.message);

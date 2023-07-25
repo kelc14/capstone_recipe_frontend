@@ -15,7 +15,7 @@ const SomethingWentWrong = () => {
         alt="broken egg"
       />
       <p className="SomethingWentWrong-text">Something Went Wrong :( </p>
-      <p className="SomethingWentWrong-text"> Please try again later. </p>
+      <p className="SomethingWentWrong-text"> Please try again. </p>
     </div>
   );
 };

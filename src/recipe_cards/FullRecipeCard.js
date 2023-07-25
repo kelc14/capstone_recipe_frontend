@@ -100,8 +100,8 @@ const FullRecipeCard = ({ show, showModal, uri }) => {
                 </button>
                 <div className="FullRecipe-recipeinfo">
                   <ul className="FullRecipe-ingredients">
-                    {recipe.ingredientLines.map((ingr) => (
-                      <li>- {ingr}</li>
+                    {recipe.ingredientLines.map((ingr, idx) => (
+                      <li key={idx}>- {ingr}</li>
                     ))}
                   </ul>
                 </div>

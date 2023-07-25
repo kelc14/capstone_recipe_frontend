@@ -42,7 +42,6 @@ const SignUpForm = () => {
       setFormData(INITIAL_STATE);
     } catch (error) {
       setError(() => error);
-      console.log("error = ", error);
     }
   };
   /** Update local state w/curr state of input elem */

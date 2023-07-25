@@ -63,8 +63,8 @@ const CalendarDay = ({ day, uri, handleClear }) => {
             <div className="CalendarDay-ingredients">
               Ingredients:
               <ul>
-                {recipe.ingredientLines.map((ingr) => (
-                  <li>{ingr}</li>
+                {recipe.ingredientLines.map((ingr, idx) => (
+                  <li key={idx}>{ingr}</li>
                 ))}
               </ul>
             </div>

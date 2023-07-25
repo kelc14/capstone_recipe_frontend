@@ -28,8 +28,6 @@ const BookDetails = () => {
     dispatch(getBookDetails({ id }));
   }, [dispatch, id]);
 
-  console.log("book", book);
-
   if (!book) return <p>Loading...</p>;
 
   if (book) {

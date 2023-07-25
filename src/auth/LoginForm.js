@@ -36,7 +36,6 @@ const LoginForm = () => {
       setFormData(INITIAL_STATE);
     } catch (error) {
       // HANDLE RETURN BELOW
-      console.log("error = ", error);
     }
   };
 
