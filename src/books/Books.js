@@ -58,7 +58,6 @@ const Books = () => {
 
   const handleEdit = (id) => {
     showEditModal();
-    console.log(id);
   };
   // delete book
   const handleDelete = (id) => {

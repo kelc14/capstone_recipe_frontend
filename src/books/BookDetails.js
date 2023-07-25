@@ -8,20 +8,17 @@ import { useDispatch, useSelector } from "react-redux";
 const BookDetails = () => {
   let { id } = useParams();
   const [isLoading, setIsLoading] = useState(() => true);
-  // const { userInfo } = useSelector((store) => store.auth);
 
   const dispatch = useDispatch();
+  const { book } = useSelector((store) => store.book);
 
   useEffect(() => {
     dispatch(getBookDetails({ id }));
     if (book) {
       setIsLoading(() => false);
     }
-  }, [dispatch, id]);
+  }, [id, isLoading]);
 
-  const { book } = useSelector((store) => store.book);
-
-  console.log(isLoading);
   if (isLoading) return <p>Loading...</p>;
 
   if (!isLoading) {

@@ -18,8 +18,6 @@ const CalendarDay = ({ day, uri, handleClear }) => {
       };
       getRecipe();
     }
-    // setLoading(() => false);
-    // console.log("this ran again too");
   }, [uri]);
 
   const clearDay = () => {

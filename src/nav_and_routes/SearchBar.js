@@ -23,11 +23,8 @@ const SearchBar = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(formData);
     dispatch(getRecipesByQuery(formData));
-    // if (formData.search !== "") {
-    //   search(formData);
-    // }
+
     navigate("/");
     setFormData(INITIAL_STATE);
   };

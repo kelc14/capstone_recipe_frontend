@@ -7,7 +7,7 @@ export const loginUser = createAsyncThunk(
   "auth/login",
   async ({ username, password }, { rejectWithValue }) => {
     try {
-      const config = {
+      let config = {
         headers: {
           "Content-Type": "application/json",
         },
@@ -17,9 +17,18 @@ export const loginUser = createAsyncThunk(
         { username, password },
         config
       );
-      //   console.log(res.data.token, "token");
       localStorage.setItem("userToken", res.data.token);
-      return res.data;
+
+      config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.userToken}`,
+        },
+      };
+      //   console.log(res.data.token, "token");
+      const result = await axios.get(`${backendURL}/user/${username}`, config);
+
+      return result.data;
     } catch (error) {
       // return custom error message from backend if present
       if (error.response && error.response.data.message) {
@@ -48,10 +57,18 @@ export const signupUser = createAsyncThunk(
         { username, password, firstName, lastName, email },
         config
       );
-      //   console.log(res.data.token, "token");
-
       localStorage.setItem("userToken", res.data.token);
-      return res.data;
+
+      config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.userToken}`,
+        },
+      };
+      //   console.log(res.data.token, "token");
+      const result = await axios.get(`${backendURL}/user/${username}`, config);
+
+      return result.data;
     } catch (error) {
       // return custom error message from backend if present
       if (error.response && error.response.data.message) {

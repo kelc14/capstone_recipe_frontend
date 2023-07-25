@@ -24,19 +24,11 @@ const LoginForm = () => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      //   console.log(formData, "submitted");
-      //   dispatch(loginUser(formData));
-
-      //   let token = await WhiskApi.userLogin(formData);
       dispatch(loginUser(formData));
       WhiskApi.token = userToken;
-      //   console.log(token);
-      //   loginUser(formData.username, token);
       navigate("/");
       setFormData(INITIAL_STATE);
-    } catch (err) {
-      //   documentErrors(err);
-    }
+    } catch (err) {}
   };
   /** Update local state w/curr state of input elem */
   const handleChange = (evt) => {

@@ -6,6 +6,7 @@ import CalendarDay from "./CalendarDay";
 
 const Calendar = () => {
   const [calendar, setCalendar] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const { userInfo } = useSelector((store) => store.auth);
 
   useEffect(() => {
@@ -14,14 +15,14 @@ const Calendar = () => {
         try {
           let cal = await WhiskApi.getCalendar(userInfo.username);
           setCalendar(() => ({ ...cal.calendar }));
+          setIsLoading(() => false);
         } catch (e) {}
       }
     };
     getCalendar();
-  }, [userInfo]);
+  }, [userInfo, isLoading]);
 
   const handleClear = async (day) => {
-    console.log("ran!");
     let calendar = WhiskApi.updateCalendar({
       username: userInfo.username,
       day: day,
@@ -30,47 +31,49 @@ const Calendar = () => {
     setCalendar(() => ({ ...calendar }));
   };
 
+  if (isLoading) return <p>Loading</p>;
+
   return (
     <div className="Calendar">
       <CalendarDay
         day={"sunday"}
-        key="sunday"
+        key={"sunday"}
         uri={calendar.sunday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"monday"}
-        key="monday"
+        key={"monday"}
         uri={calendar.monday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"tuesday"}
-        key="tuesday"
+        key={"tuesday"}
         uri={calendar.tuesday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"wednesday"}
-        key="wednesday"
+        key={"wednesday"}
         uri={calendar.wednesday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"thursday"}
-        key="thursday"
+        key={"thursday"}
         uri={calendar.thursday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"friday"}
-        key="friday"
+        key={"friday"}
         uri={calendar.friday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"saturday"}
-        key="saturday"
+        key={"saturday"}
         uri={calendar.saturday}
         handleClear={handleClear}
       />

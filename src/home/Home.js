@@ -6,9 +6,6 @@ import "./Home.css";
 import AnonHome from "./AnonHome";
 import RecipeCard from "../recipe_cards/RecipeCard";
 import SomethingWentWrong from "../errors/SomethingWentWrong";
-import WhiskApi from "../api/api";
-import jwt_decode from "jwt-decode";
-import { updateUserInfo } from "../features/authSlice";
 
 /** Home component
  * - first component to display to user (home page)
@@ -23,13 +20,15 @@ import { updateUserInfo } from "../features/authSlice";
  */
 
 const Home = () => {
-  const { userInfo, userToken } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
+  const { userInfo, userToken } = useSelector((store) => store.auth);
 
   // fetch recipes when site loads
   useEffect(() => {
-    dispatch(getRecipes());
-  }, [userToken]);
+    if (userToken) {
+      dispatch(getRecipes());
+    }
+  }, [userInfo, userToken]);
 
   const { recipes, loading } = useSelector((store) => store.recipes);
 

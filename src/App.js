@@ -48,7 +48,7 @@ function App() {
         dispatch(authenticateUser({ username, token: WhiskApi.token }));
       }
     }
-  }, []);
+  }, [userInfo]);
 
   const handleLogout = () => {
     localStorage.clear();

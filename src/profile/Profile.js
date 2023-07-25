@@ -22,15 +22,7 @@ const Profile = () => {
     evt.preventDefault();
     try {
       dispatch(updateUser(formData));
-      console.log(formData);
       navigate("/profile");
-
-      // setAlert([
-      //   {
-      //     message: "You successfully updated your profile.",
-      //     type: "success",
-      //   },
-      // ]);
     } catch (err) {}
   };
 

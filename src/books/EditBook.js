@@ -21,7 +21,6 @@ const EditBook = ({ show, showModal, updateBook, id }) => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      console.log(formData);
       WhiskApi.token = localStorage.userToken;
       const newBook = await WhiskApi.updateBook(id, formData);
 

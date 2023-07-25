@@ -29,8 +29,6 @@ const FullRecipeCard = ({ show, showModal, uri }) => {
     showModal();
   };
 
-  console.log(recipe);
-
   // program to convert first letter of a string to uppercase
   function capitalizeFirstLetter(str) {
     // converting first letter to uppercase

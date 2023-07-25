@@ -19,10 +19,9 @@ const AddToBook = () => {
     evt.preventDefault();
     try {
       // add day, username, uri to Calendar DB
-      //   formData.username = userInfo.username;
+
       formData.recipeURI = `http://www.edamam.com/ontologies/edamam.owl#${uri}`;
       formData.bookId = +formData.bookId;
-      console.log(formData);
       WhiskApi.token = localStorage.userToken;
 
       WhiskApi.addRecipeToBook(formData);

@@ -17,24 +17,18 @@ const SignUpForm = () => {
 
   let navigate = useNavigate();
   let dispatch = useDispatch();
-  //   const [err, documentErrors, showFormError] = useErrors();
 
   /** Send {USERNAME, PASSWORD} to API to check if logged in and provide feedback
    *    & clear form. */
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      console.log("trying to sign up", formData);
-
       dispatch(signupUser(formData));
 
       setFormData(INITIAL_STATE);
-      console.log("signed up", formData);
 
       navigate("/");
-    } catch (err) {
-      //   documentErrors(err);
-    }
+    } catch (err) {}
     setFormData(INITIAL_STATE);
   };
   /** Update local state w/curr state of input elem */
@@ -109,7 +103,6 @@ const SignUpForm = () => {
           value={formData.email}
           className="SignUpForm-input"
         />
-        {/* {err && showFormError()} */}
         <button className="SignUpForm-button">Sign Up</button>
       </form>
     </div>
