@@ -9,17 +9,16 @@ const Calendar = () => {
   const { userInfo } = useSelector((store) => store.auth);
 
   useEffect(() => {
-    let username = userInfo.username;
     const getCalendar = async () => {
-      try {
-        // WhiskApi.token = localStorage.userToken;
-        let cal = await WhiskApi.getCalendar(username);
-        setCalendar(() => ({ ...cal.calendar }));
-        console.log(calendar);
-      } catch (e) {}
+      if (userInfo && userInfo.username) {
+        try {
+          let cal = await WhiskApi.getCalendar(userInfo.username);
+          setCalendar(() => ({ ...cal.calendar }));
+        } catch (e) {}
+      }
     };
     getCalendar();
-  }, []);
+  }, [userInfo]);
 
   const handleClear = async (day) => {
     console.log("ran!");
@@ -35,36 +34,43 @@ const Calendar = () => {
     <div className="Calendar">
       <CalendarDay
         day={"sunday"}
+        key="sunday"
         uri={calendar.sunday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"monday"}
+        key="monday"
         uri={calendar.monday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"tuesday"}
+        key="tuesday"
         uri={calendar.tuesday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"wednesday"}
+        key="wednesday"
         uri={calendar.wednesday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"thursday"}
+        key="thursday"
         uri={calendar.thursday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"friday"}
+        key="friday"
         uri={calendar.friday}
         handleClear={handleClear}
       />
       <CalendarDay
         day={"saturday"}
+        key="saturday"
         uri={calendar.saturday}
         handleClear={handleClear}
       />

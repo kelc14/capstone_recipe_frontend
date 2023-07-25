@@ -26,15 +26,20 @@ const Book = ({
         <div>
           <h1 className="Books-book-title">{book.title.toUpperCase()}</h1>
         </div>
-        <div onClick={() => handleEdit(book.id)}>
+        <div>
           <div className="Books-book-icon-container">
-            <FontAwesomeIcon icon={faEdit} className="Books-book-icon" />{" "}
+            <FontAwesomeIcon
+              icon={faEdit}
+              className="Books-book-icon"
+              onClick={() => handleEdit(book.id)}
+            />{" "}
           </div>
-          <div
-            className="Books-book-icon-container"
-            onClick={() => handleDelete(book.id)}
-          >
-            <FontAwesomeIcon className="Books-book-icon" icon={faX} />
+          <div className="Books-book-icon-container">
+            <FontAwesomeIcon
+              className="Books-book-icon"
+              icon={faX}
+              onClick={() => handleDelete(book.id)}
+            />
           </div>
         </div>
       </div>

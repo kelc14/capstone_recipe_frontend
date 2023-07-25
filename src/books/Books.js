@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBook } from "../features/authSlice";
 
@@ -22,10 +22,17 @@ import Book from "./Book";
  *
  */
 const Books = () => {
-  const { userInfo, loading } = useSelector((store) => store.auth);
+  const { userInfo } = useSelector((store) => store.auth);
+
   const dispatch = useDispatch();
 
-  const [books, setBooks] = useState(userInfo.books);
+  const [books, setBooks] = useState([]);
+  useEffect(() => {
+    if (userInfo && userInfo.username) {
+      setBooks(() => [...userInfo.books]);
+    }
+  }, [userInfo]);
+
   const [showAddForm, setShowAddForm] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
 
@@ -39,7 +46,7 @@ const Books = () => {
   };
 
   // add new book after filling out form:
-  const addBook = (newBook) => {
+  const addBookLocal = (newBook) => {
     setBooks(() => [...books, newBook]);
   };
 
@@ -68,7 +75,11 @@ const Books = () => {
     return (
       <div>
         <NoBooks showModal={showModal} />
-        <AddBook showModal={showModal} show={showAddForm} addBook={addBook} />
+        <AddBook
+          showModal={showModal}
+          show={showAddForm}
+          addBookLocal={addBookLocal}
+        />
       </div>
     );
   }
@@ -86,7 +97,11 @@ const Books = () => {
           <button className="Books-add-new" onClick={showModal}>
             <FontAwesomeIcon icon={faPlus} />
           </button>
-          <AddBook showModal={showModal} show={showAddForm} addBook={addBook} />
+          <AddBook
+            showModal={showModal}
+            show={showAddForm}
+            addBookLocal={addBookLocal}
+          />
         </div>
       </div>
       <div className="Books">

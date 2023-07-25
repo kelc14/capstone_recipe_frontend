@@ -47,8 +47,6 @@ export const addNewBook = createAsyncThunk(
         { title, username },
         config
       );
-      console.log("this ran");
-      console.log(res.data);
       return res.data.book;
     } catch (error) {
       // return custom error message from backend if present

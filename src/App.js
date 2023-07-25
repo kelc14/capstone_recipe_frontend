@@ -39,14 +39,16 @@ function App() {
   const { userInfo, userToken } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
-  // check to see if there is a userToken => add to Whisk API and if there is no userInfo -> update state
-  if (localStorage.getItem("userToken")) {
-    WhiskApi.token = localStorage.getItem("userToken");
-    if (userInfo === null) {
-      const { username } = jwt_decode(userToken);
-      dispatch(authenticateUser({ username, token: WhiskApi.token }));
+  useEffect(() => {
+    // check to see if there is a userToken => add to Whisk API and if there is no userInfo -> update state
+    if (localStorage.getItem("userToken")) {
+      WhiskApi.token = localStorage.getItem("userToken");
+      if (userInfo === null) {
+        const { username } = jwt_decode(userToken);
+        dispatch(authenticateUser({ username, token: WhiskApi.token }));
+      }
     }
-  }
+  }, []);
 
   const handleLogout = () => {
     localStorage.clear();

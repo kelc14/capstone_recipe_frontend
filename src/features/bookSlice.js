@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getBookDetails } from "./bookActions";
+import { addNewBook, getBookDetails } from "./bookActions";
 
 const initialState = {
   book: null,
@@ -19,10 +19,23 @@ const bookSlice = createSlice({
     },
     [getBookDetails.fulfilled]: (state, { payload }) => {
       state.bookLoading = false;
-      state.book = { ...payload.book };
+      state.book = payload;
     },
 
     [getBookDetails.rejected]: (state, { payload }) => {
+      state.bookLoading = false;
+      state.bookError = payload;
+    },
+    [addNewBook.pending]: (state) => {
+      state.bookLoading = true;
+      state.bookError = null;
+    },
+    [addNewBook.fulfilled]: (state, { payload }) => {
+      state.bookLoading = false;
+      state.book = payload;
+    },
+
+    [addNewBook.rejected]: (state, { payload }) => {
       state.bookLoading = false;
       state.bookError = payload;
     },
