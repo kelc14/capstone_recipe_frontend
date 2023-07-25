@@ -140,7 +140,7 @@ const FullRecipeCard = ({ show, showModal, uri }) => {
                     Source: <Link to={`${recipe.source}`}>{recipe.source}</Link>
                   </span>
                   <div className="FullRecipe-ExitWhisk">
-                    <Link>Exit Whisk to View Directions</Link>
+                    <Link to={recipe.url}>View Directions</Link>
                   </div>
                 </div>
               </div>

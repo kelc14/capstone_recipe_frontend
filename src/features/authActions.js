@@ -25,7 +25,6 @@ export const loginUser = createAsyncThunk(
           Authorization: `Bearer ${localStorage.userToken}`,
         },
       };
-      //   console.log(res.data.token, "token");
       const result = await axios.get(`${backendURL}/user/${username}`, config);
 
       return result.data;
@@ -65,7 +64,6 @@ export const signupUser = createAsyncThunk(
           Authorization: `Bearer ${localStorage.userToken}`,
         },
       };
-      //   console.log(res.data.token, "token");
       const result = await axios.get(`${backendURL}/user/${username}`, config);
 
       return result.data;

@@ -7,7 +7,6 @@ export const getBookDetails = createAsyncThunk(
   "book/:id",
   async ({ id }, { rejectWithValue }) => {
     try {
-      console.log("did this run");
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -20,7 +19,6 @@ export const getBookDetails = createAsyncThunk(
         config
       );
       const data = await res.data;
-      console.log("data", data);
       return data.book;
     } catch (error) {
       // return custom error message from backend if present

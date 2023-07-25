@@ -69,6 +69,7 @@ const RecipeCard = ({ recipe, added }) => {
             showModal={showModal}
             show={showRecipe}
             uri={recipe.uri}
+            key={recipe.uri}
           />
         </div>
       )}

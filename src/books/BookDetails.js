@@ -7,21 +7,21 @@ import { useDispatch, useSelector } from "react-redux";
 
 const BookDetails = () => {
   let { id } = useParams();
-  const [isLoading, setIsLoading] = useState(() => true);
+  // const [isLoading, setIsLoading] = useState(() => true);
 
   const dispatch = useDispatch();
   const { book } = useSelector((store) => store.book);
 
   useEffect(() => {
-    dispatch(getBookDetails({ id }));
-    if (book) {
-      setIsLoading(() => false);
+    if (!book) {
+      dispatch(getBookDetails({ id }));
     }
-  }, [id, isLoading]);
+    // setIsLoading(() => false);
+  }, [id, book]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (!book) return <p>Loading...</p>;
 
-  if (!isLoading) {
+  if (book) {
     return (
       <div className="BookDetails">
         <div className="BookDetails-header">

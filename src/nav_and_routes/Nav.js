@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { authenticateUser } from "../features/authActions";
+import WhiskApi from "../api/api";
+import jwt_decode from "jwt-decode";
 
 import SearchBar from "./SearchBar";
 
@@ -18,7 +21,18 @@ import "./Nav.css";
  */
 
 const NavBar = ({ handleLogout }) => {
-  const { userInfo } = useSelector((store) => store.auth);
+  const { userInfo, userToken } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.userToken && !userInfo) {
+      WhiskApi.token = localStorage.userToken;
+      if (userInfo === null) {
+        const { username } = jwt_decode(localStorage.userToken);
+        dispatch(authenticateUser({ username, token: WhiskApi.token }));
+      }
+    }
+  });
 
   const authLinks = () => {
     return (
