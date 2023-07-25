@@ -4,32 +4,47 @@ import "./LoginForm.css";
 import { useDispatch, useSelector } from "react-redux";
 
 import { loginUser } from "../features/authActions";
+import useErrors from "../hooks/useErrors";
 
 import { useNavigate } from "react-router-dom";
 import WhiskApi from "../api/api";
-// import WhiskApi from "../api/api";
+
+/**
+ * LOGIN FORM COMPONENT:
+ *
+ *        Renders form for logging in
+ *
+ *        Successful login directs to homepage
+ *
+ *        Invalid username/password error handling
+ *
+ */
 
 const LoginForm = () => {
   const INITIAL_STATE = { username: "", password: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);
   let navigate = useNavigate();
 
-  const { userInfo, userToken } = useSelector((store) => store.auth);
+  const { userToken, error } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
-
-  //   const [err, documentErrors, showFormError] = useErrors();
 
   /** Send {USERNAME, PASSWORD} to API to check if logged in and provide feedback
    *    & clear form. */
   const handleSubmit = async (evt) => {
     evt.preventDefault();
+
     try {
-      dispatch(loginUser(formData));
-      WhiskApi.token = userToken;
+      const originalPromiseResult = await dispatch(
+        loginUser(formData)
+      ).unwrap();
       navigate("/");
       setFormData(INITIAL_STATE);
-    } catch (err) {}
+    } catch (error) {
+      // HANDLE RETURN BELOW
+      console.log("error = ", error);
+    }
   };
+
   /** Update local state w/curr state of input elem */
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -69,7 +84,7 @@ const LoginForm = () => {
           className="LoginForm-input"
           autoComplete="current-password"
         />
-        {/* {err && showFormError()} */}
+        {error && <p>{error}</p>}
         <button className="LoginForm-button">Log in</button>
       </form>
     </div>

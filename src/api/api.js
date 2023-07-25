@@ -32,31 +32,6 @@ class WhiskApi {
 
   // Individual API routes
 
-  /** Get details on all companies
-   *    * params only include name**
-   */
-
-  //   static async getAllCompanies(params = {}) {
-  //     let res = await this.request("companies", params);
-  //     return res.companies;
-  //   }
-
-  //   /** Get details on a company by handle. */
-
-  //   static async getCompany(handle) {
-  //     let res = await this.request(`companies/${handle}`);
-  //     return res.company;
-  //   }
-
-  //   /** Get details on all jobs
-  //    * params only include title**
-  //    */
-
-  //   static async getAllJobs(params = {}) {
-  //     let res = await this.request("jobs", params);
-  //     return res.jobs;
-  //   }
-
   //   // USER ROUTES ********************************************************************************
 
   //   /** Login

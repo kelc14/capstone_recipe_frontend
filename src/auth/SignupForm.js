@@ -3,7 +3,7 @@ import "./SignupForm.css";
 
 import { useNavigate } from "react-router-dom";
 import { signupUser } from "../features/authActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const SignUpForm = () => {
   const INITIAL_STATE = {
@@ -14,6 +14,7 @@ const SignUpForm = () => {
     email: "",
   };
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const { error } = useSelector((store) => store.auth);
 
   let navigate = useNavigate();
   let dispatch = useDispatch();
@@ -22,13 +23,16 @@ const SignUpForm = () => {
    *    & clear form. */
   const handleSubmit = async (evt) => {
     evt.preventDefault();
+
     try {
-      dispatch(signupUser(formData));
-
-      setFormData(INITIAL_STATE);
-
-      navigate("/");
-    } catch (err) {}
+      const originalPromiseResult = await dispatch(
+        signupUser(formData)
+      ).unwrap();
+    } catch (error) {
+      // HANDLE RETURN BELOW
+      console.log("error = ", error);
+    }
+    navigate("/");
     setFormData(INITIAL_STATE);
   };
   /** Update local state w/curr state of input elem */
@@ -103,6 +107,8 @@ const SignUpForm = () => {
           value={formData.email}
           className="SignUpForm-input"
         />
+        {error && <p>{error}</p>}
+
         <button className="SignUpForm-button">Sign Up</button>
       </form>
     </div>

@@ -25,7 +25,7 @@ const Home = () => {
 
   // fetch recipes when site loads
   useEffect(() => {
-    if (userToken) {
+    if (localStorage.userToken) {
       dispatch(getRecipes());
     }
   }, [userInfo, userToken]);

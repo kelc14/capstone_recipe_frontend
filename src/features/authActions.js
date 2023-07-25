@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import WhiskApi from "../api/api";
 
 const backendURL = "https://whisk-backend-kelc14.onrender.com";
 
@@ -18,6 +19,7 @@ export const loginUser = createAsyncThunk(
         config
       );
       localStorage.setItem("userToken", res.data.token);
+      WhiskApi.token = res.data.token;
 
       config = {
         headers: {
@@ -29,9 +31,10 @@ export const loginUser = createAsyncThunk(
 
       return result.data;
     } catch (error) {
+      console.log(error);
       // return custom error message from backend if present
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
+      if (error.response && error.response.data.error.message) {
+        return rejectWithValue(error.response.data.error.message);
       } else {
         return rejectWithValue(error.message);
       }
@@ -69,8 +72,8 @@ export const signupUser = createAsyncThunk(
       return result.data;
     } catch (error) {
       // return custom error message from backend if present
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
+      if (error.response && error.response.data.error.message) {
+        return rejectWithValue(error.response.data.error.message);
       } else {
         return rejectWithValue(error.message);
       }
@@ -94,8 +97,8 @@ export const authenticateUser = createAsyncThunk(
       return { user: res.data.user, token };
     } catch (error) {
       // return custom error message from backend if present
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
+      if (error.response && error.response.data.error.message) {
+        return rejectWithValue(error.response.data.error.message);
       } else {
         return rejectWithValue(error.message);
       }
@@ -123,7 +126,7 @@ export const updateUser = createAsyncThunk(
       return res.data;
     } catch (error) {
       // return custom error message from backend if present
-      if (error.response && error.response.data.message) {
+      if (error.response && error.response.data.error.message) {
         return rejectWithValue(error.response.data.message);
       } else {
         return rejectWithValue(error.message);
