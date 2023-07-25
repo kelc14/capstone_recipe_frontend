@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const backendURL = "http://localhost:3001";
+const backendURL = "https://whisk-backend-kelc14.onrender.com";
 
 export const getBookDetails = createAsyncThunk(
   "book/:id",

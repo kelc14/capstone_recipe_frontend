@@ -19,7 +19,7 @@ const bookSlice = createSlice({
     },
     [getBookDetails.fulfilled]: (state, { payload }) => {
       state.bookLoading = false;
-      state.book = payload.book;
+      state.book = payload;
     },
 
     [getBookDetails.rejected]: (state, { payload }) => {

@@ -1,0 +1,24 @@
+.AddToBook-header {
+  font-size: 1.5rem;
+  margin: 0 auto;
+}
+
+.AddToBook-form {
+  padding: 10px;
+}
+.AddToBook-form select {
+  font-size: 15px;
+  font-family: var(--theme-font-family);
+  margin: 10px;
+  width: 60%;
+}
+.AddToBook-form button {
+  padding: 5px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--theme-orange);
+  font-family: var(--theme-font-family);
+}
+.AddToBook-form {
+  padding: 10px;
+}

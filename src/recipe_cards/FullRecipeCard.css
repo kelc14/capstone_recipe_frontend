@@ -162,6 +162,11 @@
   color: white;
 }
 
+.FullRecipe-sm-text {
+  font-size: 0.7rem;
+  font-style: italic;
+}
+
 /* buttons */
 
 .FullRecipeCard-calendar-btn {

@@ -13,11 +13,12 @@ const BookDetails = () => {
   const { book } = useSelector((store) => store.book);
 
   useEffect(() => {
-    if (!book) {
-      dispatch(getBookDetails({ id }));
-    }
+    dispatch(getBookDetails({ id }));
+
     // setIsLoading(() => false);
-  }, [id, book]);
+  }, [id]);
+
+  console.log("book", book);
 
   if (!book) return <p>Loading...</p>;
 

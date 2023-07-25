@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faStar, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import "./FullRecipeCard.css";
 import WhiskApi from "../api/api";
-import ToggleSwitch from "../common/ToggleSwitch";
+// import ToggleSwitch from "../common/ToggleSwitch";
 import AddToCalendar from "../calendar/AddToCalendar";
 import { Link } from "react-router-dom";
+import AddToBook from "../books/AddToBook";
 
 const FullRecipeCard = ({ show, showModal, uri }) => {
   const [recipe, setRecipe] = useState({});
@@ -62,47 +63,9 @@ const FullRecipeCard = ({ show, showModal, uri }) => {
                       <b>Meal Type: </b>
                       {capitalizeFirstLetter(`${recipe.mealType}`)}
                     </p>
-                    <AddToCalendar uri={recipe.uri} />
                   </div>
                   <div className="FullRecipeCard-header-about-ratings">
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td className="FullRecipeCard-table-description">
-                            Your Rating:
-                          </td>
-                          <td className="FullRecipeCard-table-stars">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                          </td>
-                          <td className="FullRecipeCard-table-buttons">
-                            <button className="FullRecipeCard-review-btns">
-                              Leave a Review
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="FullRecipeCard-table-description">
-                            Community Rating:
-                          </td>
-                          <td className="FullRecipeCard-table-stars">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                          </td>
-                          <td className="FullRecipeCard-table-buttons">
-                            <button className="FullRecipeCard-review-btns">
-                              View Reviews
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <AddToCalendar uri={recipe.uri} />
                   </div>
                 </div>
               </div>
@@ -110,13 +73,7 @@ const FullRecipeCard = ({ show, showModal, uri }) => {
 
             <div className="FullRecipeCard-body">
               <div className="FullRecipeCard-user-info">
-                <div className="FullRecipeCard-user-tried">
-                  <ToggleSwitch /> <span>Tried It!</span>
-                </div>
-
-                <div className="FullRecipeCard-user-notes">
-                  Add Your Notes ...
-                </div>
+                <AddToBook recipeURI={recipe.uri.slice(44)} />
               </div>
               <div className="FullRecipeCard-recipe-info">
                 <div className="FullRecipe-recipeinfo"></div>
@@ -135,13 +92,20 @@ const FullRecipeCard = ({ show, showModal, uri }) => {
                 <button className="FullReicpeCard-recipe-info-buttons">
                   <FontAwesomeIcon icon={faCaretDown} /> Directions
                 </button>
-                <div className="FullRecipe-recipeinfo FullRecipe-directions-container">
-                  <span>
-                    Source: <Link to={`${recipe.source}`}>{recipe.source}</Link>
-                  </span>
-                  <div className="FullRecipe-ExitWhisk">
-                    <Link to={recipe.url}>View Directions</Link>
+                <div className="FullRecipe-recipeinfo ">
+                  <div className="FullRecipe-directions-container">
+                    <span>
+                      Source:{" "}
+                      <Link to={`${recipe.source}`}>{recipe.source}</Link>
+                    </span>
+
+                    <div className="FullRecipe-ExitWhisk">
+                      <Link to={recipe.url}>View Directions</Link>
+                    </div>
                   </div>
+                  <small className="FullRecipe-sm-text">
+                    Clicking this link directs you outside of Whisk.
+                  </small>
                 </div>
               </div>
             </div>

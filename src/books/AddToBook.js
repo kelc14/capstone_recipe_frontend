@@ -5,12 +5,14 @@ import WhiskApi from "../api/api";
 
 import "./AddToBook.css";
 
-const AddToBook = () => {
+const AddToBook = ({ recipeURI }) => {
   const INITIAL_STATE = { bookId: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);
   let navigate = useNavigate();
 
-  const { uri } = useParams();
+  let { uri } = useParams();
+
+  uri = uri ? uri : recipeURI;
   const { userInfo } = useSelector((store) => store.auth);
 
   /** Send {username, day, uri } to API to add recipe to calendar
@@ -46,8 +48,9 @@ const AddToBook = () => {
 
   return (
     <div className="AddToBook" onSubmit={handleSubmit}>
-      <h1>Choose Book To Add To:</h1>
-      <form>
+      <h1 className="AddToBook-header">Choose Book To Add To:</h1>
+
+      <form className="AddToBook-form">
         <select
           name="bookId"
           id="bookId"
