@@ -3,7 +3,7 @@ import "./SignupForm.css";
 
 import { useNavigate } from "react-router-dom";
 import { signupUser } from "../features/authActions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const SignUpForm = () => {
   const INITIAL_STATE = {
@@ -14,26 +14,26 @@ const SignUpForm = () => {
     email: "",
   };
   const [formData, setFormData] = useState(INITIAL_STATE);
-  const { error } = useSelector((store) => store.auth);
+  const [error, setError] = useState(null);
 
   let navigate = useNavigate();
   let dispatch = useDispatch();
 
   /** Send {USERNAME, PASSWORD} to API to check if logged in and provide feedback
    *    & clear form. */
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
 
     try {
-      const originalPromiseResult = await dispatch(
-        signupUser(formData)
-      ).unwrap();
+      await dispatch(signupUser(formData)).unwrap();
+
+      navigate("/");
+      setFormData(INITIAL_STATE);
     } catch (error) {
-      // HANDLE RETURN BELOW
+      setError(() => error);
       console.log("error = ", error);
     }
-    navigate("/");
-    setFormData(INITIAL_STATE);
   };
   /** Update local state w/curr state of input elem */
   const handleChange = (evt) => {
@@ -107,6 +107,7 @@ const SignUpForm = () => {
           value={formData.email}
           className="SignUpForm-input"
         />
+
         {error && <p>{error}</p>}
 
         <button className="SignUpForm-button">Sign Up</button>

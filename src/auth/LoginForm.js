@@ -4,10 +4,8 @@ import "./LoginForm.css";
 import { useDispatch, useSelector } from "react-redux";
 
 import { loginUser } from "../features/authActions";
-import useErrors from "../hooks/useErrors";
 
 import { useNavigate } from "react-router-dom";
-import WhiskApi from "../api/api";
 
 /**
  * LOGIN FORM COMPONENT:
@@ -25,7 +23,7 @@ const LoginForm = () => {
   const [formData, setFormData] = useState(INITIAL_STATE);
   let navigate = useNavigate();
 
-  const { userToken, error } = useSelector((store) => store.auth);
+  const { error } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
   /** Send {USERNAME, PASSWORD} to API to check if logged in and provide feedback
@@ -34,9 +32,7 @@ const LoginForm = () => {
     evt.preventDefault();
 
     try {
-      const originalPromiseResult = await dispatch(
-        loginUser(formData)
-      ).unwrap();
+      await dispatch(loginUser(formData)).unwrap();
       navigate("/");
       setFormData(INITIAL_STATE);
     } catch (error) {

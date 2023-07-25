@@ -49,7 +49,7 @@ export const signupUser = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const config = {
+      let config = {
         headers: {
           "Content-Type": "application/json",
         },
