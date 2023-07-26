@@ -34,7 +34,6 @@ const Book = ({
   handleDelete,
   showEditModal,
   showEditForm,
-  updateBook,
 }) => {
   return (
     <div className="Books-book" key={book.id}>
@@ -69,12 +68,7 @@ const Book = ({
           View Recipes
         </NavLink>
       </div>
-      <EditBook
-        showModal={showEditModal}
-        show={showEditForm}
-        updateBook={updateBook}
-        id={book.id}
-      />
+      <EditBook showModal={showEditModal} show={showEditForm} id={book.id} />
     </div>
   );
 };

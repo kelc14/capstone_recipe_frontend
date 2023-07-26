@@ -35,6 +35,7 @@ export const getBookDetails = createAsyncThunk(
     }
   }
 );
+
 /** Add New book to databse for user:
  * {title, username} = > {id, title, username, recipes: [...]}
  */
@@ -55,6 +56,7 @@ export const addNewBook = createAsyncThunk(
       );
       return res.data.book;
     } catch (error) {
+      console.log(error);
       // return custom error message from backend if present
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);

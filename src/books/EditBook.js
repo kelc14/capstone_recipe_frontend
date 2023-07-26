@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authenticateUser } from "../features/authActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import "./EditBook.css";
@@ -14,10 +16,11 @@ import WhiskApi from "../api/api";
  *        State: useForm
  *
  */
-const EditBook = ({ show, showModal, updateBook, id }) => {
+const EditBook = ({ show, showModal, id }) => {
   const INITIAL_STATE = { title: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);
   let navigate = useNavigate();
+  let dispatch = useDispatch();
 
   // toggle modal off
   const onClose = () => {
@@ -33,8 +36,13 @@ const EditBook = ({ show, showModal, updateBook, id }) => {
       WhiskApi.token = localStorage.userToken;
       const newBook = await WhiskApi.updateBook(id, formData);
 
-      // add book to local state
-      updateBook(newBook);
+      dispatch(
+        authenticateUser({
+          username: newBook.username,
+          token: localStorage.userToken,
+        })
+      );
+
       //toggle off modal:
       setFormData(INITIAL_STATE);
       showModal();

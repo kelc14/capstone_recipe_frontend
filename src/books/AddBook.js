@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addBook } from "../features/authSlice";
-import WhiskApi from "../api/api";
+import { addNewBook } from "../features/bookActions";
 
 import "./AddBook.css";
+import { authenticateUser } from "../features/authActions";
 
 /**
  *  AddBook Component: 
@@ -19,7 +19,7 @@ import "./AddBook.css";
  *        State: useForm
  *
  */
-const AddBook = ({ show, showModal, addBookLocal }) => {
+const AddBook = ({ show, showModal }) => {
   const INITIAL_STATE = { title: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);
   let navigate = useNavigate();
@@ -38,18 +38,24 @@ const AddBook = ({ show, showModal, addBookLocal }) => {
     evt.preventDefault();
     try {
       formData.username = userInfo.username;
-      const newBook = await WhiskApi.addNewBook(formData);
-      dispatch(addBook(formData));
+      try {
+        await dispatch(addNewBook(formData)).unwrap();
+      } catch (e) {
+        //handle
+      }
+      // update user info by fetching again
+      dispatch(
+        authenticateUser({
+          username: userInfo.username,
+          token: localStorage.userToken,
+        })
+      );
 
       //toggle off modal:
       showModal();
-      // add book to local state
-      addBookLocal(newBook);
       navigate("/books");
       setFormData(INITIAL_STATE);
-    } catch (err) {
-      //   documentErrors(err);
-    }
+    } catch (err) {}
   };
   /** Update local state w/curr state of input elem */
   const handleChange = (evt) => {

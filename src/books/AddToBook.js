@@ -49,7 +49,8 @@ const AddToBook = ({ recipeURI }) => {
   if (!userInfo.books) return <p>Loading...</p>;
 
   if (userInfo.books.length === 0) {
-    return <div>You have no books yet.</div>;
+    if (recipeURI) return <div>You have no books yet.</div>;
+    navigate("/books");
   }
 
   return (

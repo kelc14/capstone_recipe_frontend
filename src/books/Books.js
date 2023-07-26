@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBook } from "../features/authSlice";
@@ -30,12 +30,7 @@ const Books = () => {
 
   const dispatch = useDispatch();
 
-  const [books, setBooks] = useState([]);
-  useEffect(() => {
-    if (userInfo && userInfo.username) {
-      setBooks(() => [...userInfo.books]);
-    }
-  }, [userInfo]);
+  let books = userInfo ? userInfo.books : null;
 
   const [showAddForm, setShowAddForm] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
@@ -44,30 +39,20 @@ const Books = () => {
   const showModal = () => {
     setShowAddForm(() => !showAddForm);
   };
-  // toggle showing modal (add book form)
+  // toggle showing modal (edit book form)
   const showEditModal = () => {
     setShowEditForm(() => !showEditForm);
-  };
-
-  // add new book after filling out form:
-  const addBookLocal = (newBook) => {
-    setBooks(() => [...books, newBook]);
-  };
-
-  //update book after editing form:
-  const updateBook = (newBook) => {
-    let oldbooks = books.filter((book) => book.id !== newBook.id);
-    setBooks(() => [...oldbooks, newBook]);
   };
 
   const handleEdit = (id) => {
     showEditModal();
   };
+
   // delete book
   const handleDelete = (id) => {
     WhiskApi.deleteBook(id);
     dispatch(deleteBook(id));
-    setBooks(() => books.filter((book) => book.id !== id));
+    // setBooks(() => books.filter((book) => book.id !== id));
   };
 
   // RETURNING =>
@@ -78,11 +63,7 @@ const Books = () => {
     return (
       <div>
         <NoBooks showModal={showModal} />
-        <AddBook
-          showModal={showModal}
-          show={showAddForm}
-          addBookLocal={addBookLocal}
-        />
+        <AddBook showModal={showModal} show={showAddForm} />
       </div>
     );
   }
@@ -100,11 +81,7 @@ const Books = () => {
           <button className="Books-add-new" onClick={showModal}>
             <FontAwesomeIcon icon={faPlus} />
           </button>
-          <AddBook
-            showModal={showModal}
-            show={showAddForm}
-            addBookLocal={addBookLocal}
-          />
+          <AddBook showModal={showModal} show={showAddForm} />
         </div>
       </div>
       <div className="Books">
@@ -115,7 +92,6 @@ const Books = () => {
             handleDelete={handleDelete}
             showEditModal={showEditModal}
             showEditForm={showEditForm}
-            updateBook={updateBook}
             key={book.id}
           />
         ))}

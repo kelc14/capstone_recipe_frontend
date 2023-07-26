@@ -37,7 +37,7 @@ const BookDetails = () => {
           <span className="BookDetails-title">{book.title}</span>
         </div>
         <div className="BookDetails-body">
-          {!book.recipes.length && (
+          {"recipes" in book && book.recipes.length === 0 && (
             <p>
               You have no recipes in this book yet. <br />
               <NavLink to="/" className="BookDetails-browse-btn">
@@ -47,7 +47,7 @@ const BookDetails = () => {
             </p>
           )}
           <div className="BookDetails-card-container">
-            {book.recipes.length > 0 &&
+            {book.recipes &&
               book.recipes.map((obj) => (
                 <RecipeCard recipe={obj} key={obj.uri} added="true" />
               ))}
