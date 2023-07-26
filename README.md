@@ -64,7 +64,7 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 ###Edamam API
 Recipe data was fetched from Edamam API.  In order to access this information, you will need to [sign up for a free account here](https://www.edamam.com/).  You will need to set a `API_APP_KEY` and `API_APP_ID` both provided to you by Edamam.
 ### Node.js Backend
-The backend of this project was built using Node.js with Express JS framework.  This RESTful API has routes to collect user information, recipe information, book information, calendar information and more.
+The backend of this project was built using Node.js with Express JS framework.  This RESTful API has routes to collect user information, recipe information, book information, calendar information and more. Returns JSON data upon request.  Accepts Authorization via bearer token.
 
 ## The Looks 👀
 When first visiting Whisk, users see a slideshow of recipe images:
@@ -80,7 +80,19 @@ Users can store recipes in books, or add them to a weekly calendar to get a list
 ![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/books.png)
 ![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/calendar.png)
 
-## Status 💯
+## The Approach 🏃‍♀️
+For the user experience, I focused on functionality that would allow users to store recipes in an organized and useful way.  See the user flow here: 
+
+![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/userflow.png)
+
+With this in mind, I created an app that allows users to browse recipes and with those recipes there are three main outcomes:
+####View Full Recipe Details
+Here users can view the meal type and cuisine type.  They can also view the recipe image, ingredients and directions (link to outside site).  From here, users can add recipes to their books, or add recipes to their calendar.
+####Add Recipe to Book
+Once a user adds a recipe to a specific book, it is stored for the user to find later. Users can view their books, edit them and delete them.
+####Add Recipe to Calendar
+A user can add one recipe per day to their calendar. They can clear each day individually.  Each day displays a list of ingredients needed to make the meal.
+## The Status 💯
 This is a capstone project for the Software Engineering Bootcamp that I completed this year.  It is a complete project for this program, but in terms of style and functionality - more work is to be done! 
 
 Styling work left to complete: 
