@@ -12,7 +12,8 @@ Introducing the ultimate recipe app, where storing and finding your favorite rec
 But that's not all! You can also make notes about recipes, leave reviews so that you can remember any changes that you made or share your thoughts with others. Whether you're an experienced chef or just starting out, Whisk It is the perfect tool to help you create amazing meals that you and your loved ones will enjoy.
 
 ## Screenshots
-![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_app/master/./readme_images/whisk_logo.png)
+![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend
+/master/./readme_images/whisk_logo.png)
 
 ## Available Scripts
 
