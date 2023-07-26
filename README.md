@@ -1,9 +1,9 @@
-# WHISK RECIPE APP
+
 ![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/whisk_white_bg.png)
 
 Live Project Link 🔗 [Whisk Recipe App](https://whisk-frontend-kelc14.onrender.com) 🔗 Hosted on Render
 
-This project was built with [Create React App](https://github.com/facebook/create-react-app).
+This project was built with [Create React App](https://github.com/facebook/create-react-app). This is the front-end of the project, [find the backend here](https://github.com/kelc14/capstone_recipe_app.git).
 
 
 ## About Whisk App 👩‍🍳
@@ -60,22 +60,37 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 * ReactJS - Frontend Framework
 * Redux - State Management
 
-## The Approach 🏃‍♀️
+## The API 📈
+###Edamam API
+Recipe data was fetched from Edamam API.  In order to access this information, you will need to [sign up for a free account here](https://www.edamam.com/).  You will need to set a `API_APP_KEY` and `API_APP_ID` both provided to you by Edamam.
+### Node.js Backend
+The backend of this project was built using Node.js with Express JS framework.  This RESTful API has routes to collect user information, recipe information, book information, calendar information and more.
 
 ## The Looks 👀
 When first visiting Whisk, users see a slideshow of recipe images:
 
-![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/homepage)
+![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/homepage.png)
 
 After logging in, users have access to recipes loaded from the Edamam Api:
 
-![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/userhomepage)
+![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/userhomepage.png)
 
 Users can store recipes in books, or add them to a weekly calendar to get a list of ingredients for their shopping lists:
 
-![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/books)
-![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/calendar)
+![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/books.png)
+![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/calendar.png)
 
 ## Status 💯
-## React Component Heirarchy
+This is a capstone project for the Software Engineering Bootcamp that I completed this year.  It is a complete project for this program, but in terms of style and functionality - more work is to be done! 
+
+Styling work left to complete: 
+- Responsive Design
+- Modernize Theme Colors
+- Focus on Mobile View
+
+Functionality work left to complete:
+- Users add and view recipe ratings
+- Users add and view recipe reviews
+- Collect an ingredient list from the weekly schedule
+
 
