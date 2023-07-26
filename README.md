@@ -1,20 +1,19 @@
 # WHISK RECIPE APP
+![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/whisk_white_bg.png)
 
 Live Project Link 🔗 [Whisk Recipe App](https://whisk-frontend-kelc14.onrender.com) 🔗 Hosted on Render
 
 This project was built with [Create React App](https://github.com/facebook/create-react-app).
 
 
-## About Whisk App
+## About Whisk App 👩‍🍳
 
 Introducing the ultimate recipe app, where storing and finding your favorite recipes has never been easier.  With Whisk, you can keep all of your favorite recipes in one place, making it easier than ever to find that perfect dish for any occasion.
 
 But that's not all! You can also make notes about recipes, leave reviews so that you can remember any changes that you made or share your thoughts with others. Whether you're an experienced chef or just starting out, Whisk It is the perfect tool to help you create amazing meals that you and your loved ones will enjoy.
 
-## Screenshots
-![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/whisk_logo.png)
 
-## Available Scripts
+## Available Scripts ⌨️
 
 First install dependencies:
 ### `npm install`
@@ -55,13 +54,28 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 
-## Tech Framework
+## The Tech Framework 💻
 * PostgreSQL - Relational Database Management System
 * Node.js and Express - Backend API
 * ReactJS - Frontend Framework
 * Redux - State Management
 
-## Approach
-## Status
+## The Approach 🏃‍♀️
+
+## The Looks 👀
+When first visiting Whisk, users see a slideshow of recipe images:
+
+![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/homepage)
+
+After logging in, users have access to recipes loaded from the Edamam Api:
+
+![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/userhomepage)
+
+Users can store recipes in books, or add them to a weekly calendar to get a list of ingredients for their shopping lists:
+
+![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/books)
+![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend/master/readme_images/calendar)
+
+## Status 💯
 ## React Component Heirarchy
 
