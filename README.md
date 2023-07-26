@@ -13,7 +13,7 @@ But that's not all! You can also make notes about recipes, leave reviews so that
 
 ## Screenshots
 ![whisk logo](https://raw.githubusercontent.com/kelc14/capstone_recipe_frontend
-/master/./readme_images/whisk_logo.png)
+/master/readme_images/whisk_logo.png)
 
 ## Available Scripts
 
