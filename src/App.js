@@ -43,16 +43,16 @@ function App() {
   const { userInfo, userToken } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    // check to see if there is a userToken => add to Whisk API and if there is no userInfo -> update state
-    if (localStorage.getItem("userToken")) {
-      WhiskApi.token = localStorage.getItem("userToken");
-      if (userInfo === null) {
-        const { username } = jwt_decode(userToken);
-        dispatch(authenticateUser({ username, token: WhiskApi.token }));
-      }
-    }
-  }, [dispatch, userToken, userInfo]);
+  // useEffect(() => {
+  //   // check to see if there is a userToken => add to Whisk API and if there is no userInfo -> update state
+  //   if (localStorage.getItem("userToken")) {
+  //     WhiskApi.token = localStorage.getItem("userToken");
+  //     if (userInfo === null) {
+  //       const { username } = jwt_decode(userToken);
+  //       dispatch(authenticateUser({ username, token: WhiskApi.token }));
+  //     }
+  //   }
+  // }, [dispatch, userToken, userInfo]);
 
   const handleLogout = () => {
     localStorage.clear();
@@ -62,58 +62,60 @@ function App() {
   return (
     <div className="App">
       <Nav handleLogout={handleLogout} />
-      <Routes>
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/signup" element={<SignUpForm />} />
+      <div className="App-body">
+        <Routes>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
 
-        <Route
-          path="/books/:id"
-          element={
-            <ProtectedRoutes>
-              <BookDetails />
-            </ProtectedRoutes>
-          }
-        />
+          <Route
+            path="/books/:id"
+            element={
+              <ProtectedRoutes>
+                <BookDetails />
+              </ProtectedRoutes>
+            }
+          />
 
-        <Route
-          path="/books"
-          element={
-            <ProtectedRoutes>
-              <Books />
-            </ProtectedRoutes>
-          }
-        />
+          <Route
+            path="/books"
+            element={
+              <ProtectedRoutes>
+                <Books />
+              </ProtectedRoutes>
+            }
+          />
 
-        <Route
-          path="/add/:uri"
-          element={
-            <ProtectedRoutes>
-              <AddToBook />
-            </ProtectedRoutes>
-          }
-        />
+          <Route
+            path="/add/:uri"
+            element={
+              <ProtectedRoutes>
+                <AddToBook />
+              </ProtectedRoutes>
+            }
+          />
 
-        <Route
-          path="/calendar"
-          element={
-            <ProtectedRoutes>
-              <Calendar />
-            </ProtectedRoutes>
-          }
-        />
+          <Route
+            path="/calendar"
+            element={
+              <ProtectedRoutes>
+                <Calendar />
+              </ProtectedRoutes>
+            }
+          />
 
-        <Route
-          path="/user/:username"
-          element={
-            <ProtectedRoutes>
-              <Profile />
-            </ProtectedRoutes>
-          }
-        />
+          <Route
+            path="/user/:username"
+            element={
+              <ProtectedRoutes>
+                <Profile />
+              </ProtectedRoutes>
+            }
+          />
 
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
     </div>
   );
 }

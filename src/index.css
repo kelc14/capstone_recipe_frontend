@@ -1,5 +1,8 @@
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
   font-family: var(--theme-font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -7,6 +10,7 @@ body {
 
 html {
   font-size: calc(15px + 0.390625vw);
+  box-sizing: border-box;
 }
 
 code {

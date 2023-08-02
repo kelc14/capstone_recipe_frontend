@@ -1,16 +1,11 @@
 .CalendarDay {
-  border-radius: 10px;
-  min-height: 100px;
-  margin: 25px;
-  width: 90%;
+  margin: 10px;
+  width: 100%;
 }
 .CalendarDay-header {
   border-bottom: 1px solid var(--theme-purple);
-  margin-bottom: 10px;
-  display: grid;
-  grid-template-columns: 8fr 2fr;
+  margin-bottom: 5px;
 }
-
 .CalendarDay-button-container {
   position: relative;
 }
@@ -19,18 +14,12 @@
   border: none;
   background-color: var(--theme-purple);
   border-radius: 8px;
-  padding: 10px;
-  margin: 5px;
+  padding: 6px;
   color: white;
   position: absolute;
   right: 0;
+  top: -32px;
   cursor: pointer;
-}
-
-.CalendarDay-clear:hover {
-  background-color: white;
-  color: var(--theme-purple);
-  border: 1px solid var(--theme-purple);
 }
 .CalendarDay-day {
   color: purple;
@@ -42,25 +31,83 @@
 
 .CalendarDay-recipe {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
 }
-
 .CalendarDay-img {
+  width: 100%;
   border-radius: 8px;
 }
 .CalendarDay-label {
   font-weight: 700;
 }
-
 .CalendarDay-ingredients {
   text-align: left;
+  font-size: 16px;
 }
 
-.CalendarDay-ingredients ul {
-  list-style-type: circle;
+.CalendarDay-ingredients span {
+  display: none;
 }
 
-.CalendarDay-norecipe {
-  width: 80%;
-  margin: 0 auto;
+@media screen and (min-width: 480px) {
+  .CalendarDay {
+    min-height: 100px;
+    margin: 25px;
+    width: 90%;
+  }
+  .CalendarDay-header {
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+  }
+
+  .CalendarDay-clear {
+    border: none;
+    background-color: var(--theme-purple);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+  }
+
+  .CalendarDay-clear:hover {
+    background-color: white;
+    color: var(--theme-purple);
+    border: 1px solid var(--theme-purple);
+  }
+  .CalendarDay-ingredients ul {
+    list-style-type: circle;
+    margin-top: 0;
+    font-size: 1rem;
+  }
+
+  /* .CalendarDay-recipe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  } */
+
+  .CalendarDay-img {
+    border-radius: 8px;
+  }
+
+  /* .CalendarDay-label {
+    font-weight: 700;
+  } */
+
+  /* .CalendarDay-ingredients {
+    text-align: left;
+  } */
+
+  /* .CalendarDay-ingredients ul {
+    list-style-type: circle;
+  } */
+
+  .CalendarDay-norecipe {
+    width: 80%;
+    margin: 0 auto;
+  }
 }

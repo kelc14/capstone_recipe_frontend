@@ -61,7 +61,7 @@ const CalendarDay = ({ day, uri, handleClear }) => {
               <p className="CalendarDay-label">{recipe.label}</p>
             </div>
             <div className="CalendarDay-ingredients">
-              Ingredients:
+              <span>Ingredients:</span>
               <ul>
                 {recipe.ingredientLines.map((ingr, idx) => (
                   <li key={idx}>{ingr}</li>

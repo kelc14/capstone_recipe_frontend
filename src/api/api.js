@@ -13,7 +13,7 @@ class WhiskApi {
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
-    // console.debug("API Call:", endpoint, data, method);
+    console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${WhiskApi.token}` };
@@ -81,6 +81,7 @@ class WhiskApi {
 
   static async getRandomRecipes() {
     let res = await this.request(`api/recipe`);
+    console.log("this request is running");
     return res.recipes;
   }
   //   /** Get random recipes

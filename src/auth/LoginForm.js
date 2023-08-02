@@ -22,7 +22,7 @@ const LoginForm = () => {
   const [formData, setFormData] = useState(INITIAL_STATE);
   let navigate = useNavigate();
 
-  const { error } = useSelector((store) => store.auth);
+  const { error, loading } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
   /** Send {USERNAME, PASSWORD} to API to check if logged in and provide feedback
@@ -32,12 +32,16 @@ const LoginForm = () => {
 
     try {
       await dispatch(loginUser(formData)).unwrap();
-      navigate("/");
+      ////
       setFormData(INITIAL_STATE);
+
+      navigate("/");
     } catch (error) {
       // HANDLE RETURN BELOW
     }
   };
+  console.log("loading", loading);
+  if (loading) return <p>loading</p>;
 
   /** Update local state w/curr state of input elem */
   const handleChange = (evt) => {

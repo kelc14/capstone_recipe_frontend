@@ -1,80 +1,177 @@
-.NavBar {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-between;
-  background-color: var(--theme-green);
-  overflow: hidden;
-}
+/* CHECKBOX HACK */
 
-.Whisk-logo-img {
-  padding: 8px;
-  height: 30px;
-}
-
-.NavBar-li a {
-  display: block;
-  color: var(--theme-beige);
-  font-size: 1rem;
-  font-weight: 700;
-  text-align: center;
-  letter-spacing: 2px;
-  font-family: var(--theme-font-family);
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.NavBar-li a:hover {
-  color: var(--theme-orange);
-}
-.active {
-  background-color: var(--theme-orange);
-}
-
-.NavBar-dropdown {
-  float: right;
-  overflow: hidden;
-  margin-right: 25px;
-  margin-top: 3px;
-}
-
-.NavBar-dropdown-btn {
-  font-size: 18px;
-  padding: 10px 14px;
-  /* padding: px 14px; */
-  border: none;
-  border-radius: 40px;
-  background-color: var(--theme-orange);
-  outline: none;
-  color: white;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-}
-.NavBar-dropdown-content {
-  margin-top: 5px;
+#NavBar-check {
   display: none;
-  position: absolute;
-  right: 0;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
 }
 
-.NavBar-dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+@media screen and (max-width: 767.98px) {
+  .NavBar {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 53px;
+    background-color: var(--theme-green);
+    /* display: flex; */
+    width: 100%;
+    /* justify-content: space-around; */
+    /* align-items: center; */
+  }
+
+  .NavBar-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    left: 0;
+    top: 52px;
+    /* height: 100vh; */
+    width: 100vw;
+    border-bottom: 3px solid var(--theme-orange);
+    /* text-align: center; */
+    padding: 16px 0;
+  }
+
+  .NavBar li {
+    list-style-type: none;
+  }
+  .NavBar-links {
+    text-decoration: none;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    /* margin-top: 25px; */
+  }
+  .NavBar-links:hover {
+    color: var(--theme-orange);
+  }
+
+  .NavBar-li-logo img {
+    height: 48px;
+    position: absolute;
+    padding: 2px;
+
+    padding-left: 5px;
+    top: 0;
+    left: 0;
+  }
+
+  .NavBar-hamburger {
+    position: absolute;
+    font-size: 48px;
+    top: 0;
+    right: 53px;
+  }
+
+  #NavBar-check:checked ~ .NavBar-menu {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .NavBar-dropdown-content-links {
+    display: block;
+  }
+  /* when the screen is below 767, do not display:  */
+  .NavBar-dropdown-btn {
+    display: none;
+  }
 }
 
-.NavBar-dropdown-content-links:hover {
-  color: var(--theme-orange);
-}
+@media screen and (min-width: 768px) {
+  .NavBar {
+    position: fixed;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--theme-green);
+  }
 
-.NavBar-dropdown:hover .NavBar-dropdown-content {
-  display: block;
+  .Whisk-logo-img {
+    padding: 8px;
+    height: 30px;
+  }
+
+  .NavBar-li a {
+    display: block;
+    color: var(--theme-beige);
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: var(--theme-font-family);
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .NavBar-li a:hover {
+    color: var(--theme-orange);
+  }
+  .active {
+    background-color: var(--theme-orange);
+  }
+
+  .NavBar-dropdown {
+    float: right;
+    overflow: hidden;
+    margin-right: 25px;
+    margin-top: 3px;
+  }
+
+  .NavBar-dropdown-btn {
+    font-size: 18px;
+    padding: 10px 14px;
+    /* padding: px 14px; */
+    border: none;
+    border-radius: 40px;
+    background-color: var(--theme-orange);
+    outline: none;
+    color: white;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+  .NavBar-dropdown-content {
+    margin-top: 5px;
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .NavBar-dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .NavBar-dropdown-content-links:hover {
+    color: var(--theme-orange);
+  }
+
+  .NavBar-dropdown:hover .NavBar-dropdown-content {
+    display: block;
+  }
+
+  .NavBar-hamburger {
+    display: none;
+  }
+
+  .NavBar-menu {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+  }
+  .NavBar-login {
+    display: inline;
+
+    float: right;
+  }
 }

@@ -4,3 +4,27 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/* place search bar as footer when scren is tablet or smaller :  */
+@media screen and (max-width: 767.98px) {
+  .Home-search {
+    position: fixed;
+    bottom: 0;
+    background-color: var(--theme-green);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+  }
+}
+
+/* place search bar in header when on the home screen :  */
+
+@media screen and (min-width: 768px) {
+  .Home-search {
+    position: fixed;
+    left: calc(50% - 150px);
+    width: 300px;
+    top: 0;
+  }
+}

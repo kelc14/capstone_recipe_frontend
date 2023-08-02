@@ -5,6 +5,7 @@ import "./Home.css";
 
 import AnonHome from "./AnonHome";
 import RecipeCard from "../recipe_cards/RecipeCard";
+import SearchBar from "../nav_and_routes/SearchBar";
 import SomethingWentWrong from "../errors/SomethingWentWrong";
 
 /** Home component
@@ -28,7 +29,7 @@ const Home = () => {
     if (localStorage.userToken) {
       dispatch(getRecipes());
     }
-  }, [userInfo, userToken]);
+  }, []);
 
   const { recipes, loading } = useSelector((store) => store.recipes);
 
@@ -44,13 +45,22 @@ const Home = () => {
     // };
 
     return (
-      <div className="Home-recipe-container">
-        {recipes.map((obj) => (
-          <RecipeCard recipe={obj.recipe} key={obj.recipe.uri} added={false} />
-        ))}
+      <>
+        <div className="Home-search">
+          <SearchBar />
+        </div>
+        <div className="Home-recipe-container">
+          {recipes.map((obj) => (
+            <RecipeCard
+              recipe={obj.recipe}
+              key={obj.recipe.uri}
+              added={false}
+            />
+          ))}
 
-        {/* <button onClick={addMore}>Add more recipes</button> */}
-      </div>
+          {/* <button onClick={addMore}>Add more recipes</button> */}
+        </div>
+      </>
     );
   } else {
     return <AnonHome />;
